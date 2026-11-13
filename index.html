@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فروشگاه لوازم آرایشی فاطمه حریت</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #fdf2f8; /* رنگ پسزمینه صورتی بسیار ملایم */
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* هدر سایت */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+            border-radius: 0 0 30px 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: #be185d;
+            margin-bottom: 10px;
+        }
+
+        header .seller-name {
+            font-size: 1.2rem;
+            color: #9d174d;
+            font-weight: 500;
+            background: rgba(255,255,255,0.6);
+            display: inline-block;
+            padding: 5px 20px;
+            border-radius: 25px;
+        }
+
+        header .subtitle {
+            margin-top: 15px;
+            color: #831843;
+            font-size: 1rem;
+        }
+
+        /* شبکه محصولات */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 30px;
+            padding: 20px 0;
+        }
+
+        /* کارت محصول */
+        .product-card {
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(190, 24, 93, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #fce7f3;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 35px rgba(190, 24, 93, 0.15);
+        }
+
+        /* ناحیه تصویر */
+        .product-image {
+            width: 100%;
+            height: 220px;
+            background-color: #fafafa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            border-bottom: 1px solid #f3e8ff;
+        }
+
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        /* اطلاعات محصول */
+        .product-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-brand {
+            font-size: 0.85rem;
+            color: #be185d;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .product-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 12px;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #16a34a; /* رنگ سبز برای قیمت */
+            margin-top: 10px;
+            border-top: 2px dashed #f3e8ff;
+            padding-top: 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .product-price span {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #6b7280;
+        }
+
+        /* فوتر */
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            color: #9d174d;
+            border-top: 1px solid #fbcfe8;
+            font-size: 0.9rem;
+        }
+
+        /* ریسپانسیو */
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.8rem; }
+            .products-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>✨ فروشگاه لوازم آرایشی ✨</h1>
+        <div class="seller-name">مدیریت: فاطمه حریت</div>
+        <p class="subtitle">بهترین برندهای آرایشی و بهداشتی با قیمت مناسب</p>
+    </header>
+
+    <div class="container">
+        <div class="products-grid">
+
+            <!-- محصول ۱: اردن -->
+            <div class="product-card">
+                <div class="product-image">
+                    <!-- لینک تصویر را اینجا جایگزین کنید -->
+                    <img src="https://storage.khanoumi.com/ProductImages/31489-20248271553944.jpg?w=104" alt="سرم لیفتینگ اردن">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">اردن | Arden</div>
+                    <div class="product-name">سرم لیفتینگ صورت و گردن اردن حجم ۴۰ میلیلیتر</div>
+                    <div class="product-price">۱,۱۰۰,۶۴۰ <span>تومان</span></div>
+                </div>
+            </div>
+
+            <!-- محصول ۲: بیول -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://storage.khanoumi.com/ProductImages/71502-2024112416273330.jpg?w=175" alt="اسپری مو بیول">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">بیول | Biol</div>
+                    <div class="product-name">اسپری مو ۱۰ کاره بیول حجم ۴۰۰ میلیلیتر</div>
+                    <div class="product-price">۴۸۲,۵۴۰ <span>تومان</span></div>
+                </div>
+            </div>
+
+            <!-- محصول ۳: کامان -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://storage.khanoumi.com/ProductImages/5bc24aaf30354c0aa0bcdcab5881db88.jpg?w=104" alt="کرم کامان">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">کامان | Comeon</div>
+                    <div class="product-name">کرم آبرسان صورت کامان با هیالورونیک اسید ۲۰۰ میلیلیتر</div>
+                    <div class="product-price">۴۳۰,۰۰۰ <span>تومان</span></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        © ۲۰۲۵ فروشگاه لوازم آرایشی فاطمه حریت | تمامی حقوق محفوظ است.
+    </footer>
+
+</body>
+</html>
