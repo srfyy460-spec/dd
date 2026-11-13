@@ -4,220 +4,318 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>فروشگاه لوازم آرایشی فاطمه حریت</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+        :root {
+            --primary: #be185d;
+            --primary-dark: #831843;
+            --primary-light: #fce7f3;
+            --gold: #d4a373;
+            --gold-light: #f5e6d3;
+            --cream: #fdf6f0;
+            --text-dark: #2d1b2e;
+            --text-muted: #7c6a7e;
+            --white: #ffffff;
+            --shadow-soft: 0 10px 40px rgba(190, 24, 93, 0.08);
+            --shadow-hover: 0 20px 50px rgba(190, 24, 93, 0.18);
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Vazirmatn', Tahoma, sans-serif; }
         body {
-            background-color: #fdf2f8; /* رنگ پسزمینه صورتی بسیار ملایم */
-            color: #333;
-            line-height: 1.6;
+            background: linear-gradient(135deg, #fdf6f0 0%, #fce7f3 50%, #fdf6f0 100%);
+            background-attachment: fixed;
+            color: var(--text-dark);
+            line-height: 1.8;
+            min-height: 100vh;
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* هدر سایت */
-        header {
+        .announcement-bar {
+            background: linear-gradient(90deg, var(--primary-dark), var(--primary), var(--gold));
+            color: white;
             text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
-            border-radius: 0 0 30px 30px;
-            margin-bottom: 40px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            color: #be185d;
-            margin-bottom: 10px;
-        }
-
-        header .seller-name {
-            font-size: 1.2rem;
-            color: #9d174d;
+            padding: 10px 20px;
+            font-size: 0.9rem;
             font-weight: 500;
-            background: rgba(255,255,255,0.6);
-            display: inline-block;
-            padding: 5px 20px;
-            border-radius: 25px;
+            letter-spacing: 0.5px;
+            animation: shimmer 3s infinite;
+            background-size: 200% 100%;
         }
-
+        @keyframes shimmer {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        header {
+            position: relative;
+            text-align: center;
+            padding: 60px 20px 50px;
+            background: linear-gradient(135deg, rgba(190, 24, 93, 0.95), rgba(131, 24, 67, 0.9)),
+                        radial-gradient(circle at 20% 80%, var(--gold), transparent 50%);
+            border-radius: 0 0 40px 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 15px 50px rgba(131, 24, 67, 0.3);
+            overflow: hidden;
+        }
+        header::before {
+            content: '✨'; position: absolute; top: 20px; right: 30px;
+            font-size: 2rem; opacity: 0.3; animation: float 4s ease-in-out infinite;
+        }
+        header::after {
+            content: '💎'; position: absolute; bottom: 30px; left: 40px;
+            font-size: 2.5rem; opacity: 0.25; animation: float 5s ease-in-out infinite reverse;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        header h1 {
+            font-size: 3rem; font-weight: 800; color: #fff;
+            margin-bottom: 15px; text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            letter-spacing: -1px;
+        }
+        header .seller-name {
+            display: inline-block; font-size: 1.1rem; font-weight: 600;
+            color: var(--primary-dark);
+            background: linear-gradient(135deg, #fff, var(--gold-light));
+            padding: 10px 30px; border-radius: 50px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15); margin-top: 5px;
+        }
         header .subtitle {
-            margin-top: 15px;
-            color: #831843;
-            font-size: 1rem;
+            margin-top: 20px; color: rgba(255,255,255,0.95);
+            font-size: 1.05rem; font-weight: 300;
         }
-
-        /* شبکه محصولات */
+        .container { max-width: 1250px; margin: 0 auto; padding: 0 20px; }
+        .section-title { text-align: center; margin-bottom: 40px; }
+        .section-title h2 {
+            font-size: 2rem; color: var(--primary-dark);
+            font-weight: 800; position: relative; display: inline-block;
+        }
+        .section-title h2::after {
+            content: ''; position: absolute; bottom: -10px; right: 50%;
+            transform: translateX(50%); width: 80px; height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--gold)); border-radius: 2px;
+        }
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 30px;
-            padding: 20px 0;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px; padding: 10px 0 50px;
         }
-
-        /* کارت محصول */
         .product-card {
-            background: #ffffff;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(190, 24, 93, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid #fce7f3;
-            display: flex;
-            flex-direction: column;
+            background: var(--white); border-radius: 24px; overflow: hidden;
+            box-shadow: var(--shadow-soft); transition: var(--transition);
+            border: 1px solid rgba(212, 163, 115, 0.15);
+            display: flex; flex-direction: column; position: relative;
         }
-
         .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 35px rgba(190, 24, 93, 0.15);
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: var(--shadow-hover); border-color: var(--gold);
         }
-
-        /* ناحیه تصویر */
+        .badge {
+            position: absolute; top: 15px; right: 15px;
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white; padding: 5px 14px; border-radius: 20px;
+            font-size: 0.75rem; font-weight: 700; z-index: 10;
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+        }
+        .badge.new {
+            background: linear-gradient(135deg, var(--gold), #b8860b);
+            box-shadow: 0 4px 12px rgba(212, 163, 115, 0.5);
+        }
         .product-image {
-            width: 100%;
-            height: 220px;
-            background-color: #fafafa;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 15px;
-            border-bottom: 1px solid #f3e8ff;
+            width: 100%; height: 260px;
+            background: linear-gradient(135deg, #faf5f0, #fce7f3);
+            display: flex; align-items: center; justify-content: center;
+            padding: 20px; position: relative; overflow: hidden;
         }
-
+        .product-image::before {
+            content: ''; position: absolute; top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.8), transparent 60%);
+            opacity: 0; transition: opacity 0.4s;
+        }
+        .product-card:hover .product-image::before { opacity: 1; }
         .product-image img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            transition: transform 0.3s ease;
+            max-width: 100%; max-height: 100%; object-fit: contain;
+            transition: var(--transition); position: relative; z-index: 1;
         }
-
-        .product-card:hover .product-image img {
-            transform: scale(1.05);
-        }
-
-        /* اطلاعات محصول */
-        .product-info {
-            padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
+        .product-card:hover .product-image img { transform: scale(1.1) rotate(-2deg); }
+        .product-info { padding: 22px; flex-grow: 1; display: flex; flex-direction: column; }
         .product-brand {
-            font-size: 0.85rem;
-            color: #be185d;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
+            font-size: 0.8rem; color: var(--gold); font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1.5px;
+            margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
         }
-
+        .product-brand::before {
+            content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold);
+        }
         .product-name {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #1f2937;
-            margin-bottom: 12px;
-            line-height: 1.5;
-            flex-grow: 1;
+            font-size: 1rem; font-weight: 600; color: var(--text-dark);
+            margin-bottom: 15px; line-height: 1.6; flex-grow: 1;
         }
-
         .product-price {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #16a34a; /* رنگ سبز برای قیمت */
-            margin-top: 10px;
-            border-top: 2px dashed #f3e8ff;
-            padding-top: 15px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
+            font-size: 1.35rem; font-weight: 800; color: var(--primary);
+            margin-top: 10px; padding-top: 15px;
+            border-top: 2px dashed var(--primary-light);
+            display: flex; align-items: center; gap: 6px;
         }
-
-        .product-price span {
-            font-size: 0.9rem;
-            font-weight: 400;
-            color: #6b7280;
+        .product-price span { font-size: 0.85rem; font-weight: 400; color: var(--text-muted); }
+        .add-to-cart {
+            margin-top: 15px; width: 100%; padding: 12px; border: none;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white; font-family: 'Vazirmatn', sans-serif;
+            font-size: 0.95rem; font-weight: 600; cursor: pointer;
+            transition: var(--transition); position: relative; overflow: hidden;
         }
-
-        /* فوتر */
+        .add-to-cart::before {
+            content: ''; position: absolute; top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        .add-to-cart:hover::before { left: 100%; }
+        .add-to-cart:hover {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(190, 24, 93, 0.35);
+        }
+        .add-to-cart:active { transform: translateY(0); }
+        .brands-section {
+            background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(252, 231, 243, 0.6));
+            border-radius: 30px; padding: 40px 30px; margin: 30px 0 50px;
+            text-align: center; backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 163, 115, 0.2);
+        }
+        .brands-section h3 {
+            color: var(--primary-dark); font-size: 1.5rem;
+            margin-bottom: 25px; font-weight: 700;
+        }
+        .brands-list { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .brand-chip {
+            background: white; padding: 12px 30px; border-radius: 50px;
+            font-weight: 700; color: var(--primary);
+            box-shadow: 0 4px 15px rgba(190, 24, 93, 0.1);
+            transition: var(--transition); border: 2px solid transparent; cursor: pointer;
+        }
+        .brand-chip:hover {
+            border-color: var(--gold); transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 163, 115, 0.3); color: var(--gold);
+        }
         footer {
-            text-align: center;
-            padding: 30px;
-            margin-top: 50px;
-            color: #9d174d;
-            border-top: 1px solid #fbcfe8;
-            font-size: 0.9rem;
+            background: linear-gradient(135deg, var(--primary-dark), #4a0d2a);
+            color: rgba(255,255,255,0.85); padding: 50px 20px 25px;
+            margin-top: 60px; border-radius: 40px 40px 0 0; text-align: center;
         }
-
-        /* ریسپانسیو */
-        @media (max-width: 600px) {
-            header h1 { font-size: 1.8rem; }
-            .products-grid { grid-template-columns: 1fr; }
+        footer .footer-brand {
+            font-size: 1.5rem; font-weight: 800;
+            color: var(--gold-light); margin-bottom: 15px;
+        }
+        footer .footer-info {
+            display: flex; justify-content: center; gap: 40px;
+            flex-wrap: wrap; margin: 25px 0;
+        }
+        footer .footer-info div {
+            display: flex; align-items: center; gap: 8px; font-size: 0.95rem;
+        }
+        footer .footer-info span { color: var(--gold); }
+        footer .copyright {
+            margin-top: 30px; padding-top: 20px;
+            border-top: 1px solid rgba(212, 163, 115, 0.3);
+            font-size: 0.85rem; color: rgba(255,255,255,0.6);
+        }
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            header { padding: 40px 15px 35px; }
+            .products-grid { grid-template-columns: 1fr; gap: 20px; }
+            .section-title h2 { font-size: 1.5rem; }
+            footer .footer-info { gap: 20px; flex-direction: column; }
         }
     </style>
 </head>
 <body>
 
+    <div class="announcement-bar">
+        🚚 ارسال رایگان برای خریدهای بالای ۵۰۰,۰۰۰ تومان | 💝 ۱۰٪ تخفیف ویژه مشتریان جدید
+    </div>
+
     <header>
-        <h1>✨ فروشگاه لوازم آرایشی ✨</h1>
-        <div class="seller-name">مدیریت: فاطمه حریت</div>
-        <p class="subtitle">بهترین برندهای آرایشی و بهداشتی با قیمت مناسب</p>
+        <h1>فروشگاه لوازم آرایشی</h1>
+        <div class="seller-name">👑 مدیریت: فاطمه حریت</div>
+        <p class="subtitle">بهترین برندهای آرایشی و بهداشتی با اصالت و قیمت مناسب</p>
     </header>
 
     <div class="container">
+
+        <div class="section-title">
+            <h2>محصولات پرفروش</h2>
+        </div>
+
         <div class="products-grid">
 
-            <!-- محصول ۱: اردن -->
+            <!-- محصول ۱: بیول -->
             <div class="product-card">
-                <div class="product-image">
-                    <!-- لینک تصویر را اینجا جایگزین کنید -->
-                    <img src="https://storage.khanoumi.com/ProductImages/31489-20248271553944.jpg?w=104" alt="سرم لیفتینگ اردن">
-                </div>
-                <div class="product-info">
-                    <div class="product-brand">اردن | Arden</div>
-                    <div class="product-name">سرم لیفتینگ صورت و گردن اردن حجم ۴۰ میلیلیتر</div>
-                    <div class="product-price">۱,۱۰۰,۶۴۰ <span>تومان</span></div>
-                </div>
-            </div>
-
-            <!-- محصول ۲: بیول -->
-            <div class="product-card">
+                <div class="badge new">جدید</div>
                 <div class="product-image">
                     <img src="https://storage.khanoumi.com/ProductImages/71502-2024112416273330.jpg?w=175" alt="اسپری مو بیول">
                 </div>
                 <div class="product-info">
-                    <div class="product-brand">بیول | Biol</div>
-                    <div class="product-name">اسپری مو ۱۰ کاره بیول حجم ۴۰۰ میلیلیتر</div>
+                    <div class="product-brand">Biol | بیول</div>
+                    <div class="product-name">اسپری مو ۱۰ کاره بیول حجم ۴۰۰ میلی‌لیتر</div>
                     <div class="product-price">۴۸۲,۵۴۰ <span>تومان</span></div>
+                    <button class="add-to-cart">🛒 افزودن به سبد خرید</button>
                 </div>
             </div>
 
-            <!-- محصول ۳: کامان -->
+            <!-- محصول ۲: کامان -->
             <div class="product-card">
                 <div class="product-image">
                     <img src="https://storage.khanoumi.com/ProductImages/5bc24aaf30354c0aa0bcdcab5881db88.jpg?w=104" alt="کرم کامان">
                 </div>
                 <div class="product-info">
-                    <div class="product-brand">کامان | Comeon</div>
-                    <div class="product-name">کرم آبرسان صورت کامان با هیالورونیک اسید ۲۰۰ میلیلیتر</div>
+                    <div class="product-brand">Comeon | کامان</div>
+                    <div class="product-name">کرم آبرسان صورت کامان با هیالورونیک اسید و کلاژن حجم ۲۰۰ میلی‌لیتر</div>
                     <div class="product-price">۴۳۰,۰۰۰ <span>تومان</span></div>
+                    <button class="add-to-cart">🛒 افزودن به سبد خرید</button>
+                </div>
+            </div>
+
+            <!-- محصول ۳: اردن -->
+            <div class="product-card">
+                <div class="badge">٪۳۰ تخفیف</div>
+                <div class="product-image">
+                    <img src="https://storage.khanoumi.com/ProductImages/31489-20248271553944.jpg?w=104" alt="سرم اردن">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Arden | اردن</div>
+                    <div class="product-name">سرم لیفتینگ صورت و گردن اردن حجم ۴۰ میلی‌لیتر</div>
+                    <div class="product-price">۱,۱۰۰,۶۴۰ <span>تومان</span></div>
+                    <button class="add-to-cart">🛒 افزودن به سبد خرید</button>
                 </div>
             </div>
 
         </div>
+
+        <div class="brands-section">
+            <h3>🏷️ برندهای موجود</h3>
+            <div class="brands-list">
+                <div class="brand-chip">Arden</div>
+                <div class="brand-chip">Biol</div>
+                <div class="brand-chip">Comeon</div>
+            </div>
+        </div>
+
     </div>
 
     <footer>
-        © ۲۰۲۵ فروشگاه لوازم آرایشی فاطمه حریت | تمامی حقوق محفوظ است.
+        <div class="footer-brand">✨ فروشگاه فاطمه حریت ✨</div>
+        <p>با اعتماد شما، زیبایی را به خانه‌تان می‌آوریم</p>
+        <div class="footer-info">
+            <div>📞 <span>۰۹۱۲-XXX-XXXX</span></div>
+            <div>📧 <span>info@fatemehstore.ir</span></div>
+            <div>📍 <span>تهران، خیابان ولیعصر</span></div>
+        </div>
+        <div class="copyright">
+            © ۲۰۲۵ تمامی حقوق برای فروشگاه لوازم آرایشی فاطمه حریت محفوظ است.
+        </div>
     </footer>
 
 </body>
