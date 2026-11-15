@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PrrinceBeauty | فروشگاه لوازم آرایشی</title>
     
-    <!-- ⬇️ فاوآیکون (آیکون تب مرورگر) ⬇️ -->
+    <!-- ⬇️ تایتل و توضیحات: فقط اسم فارسی برای گوگل ⬇️ -->
+    <title>فروشگاه لوازم آرایشی پرنس بیوتی</title>
+    <meta name="description" content="خرید آنلاین بهترین لوازم آرایشی و بهداشتی از برندهای معتبر مانند بیول، کامان و اردن با مدیریت فاطمه حریت. فروشگاه اینترنتی پرنس بیوتی.">
+    <meta property="og:title" content="فروشگاه لوازم آرایشی پرنس بیوتی">
+    <meta property="og:description" content="خرید آنلاین بهترین لوازم آرایشی و بهداشتی از برندهای معتبر">
+    <meta property="og:url" content="https://srfyy460-spec.github.io/dd/">
+    
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="apple-touch-icon" href="logo.png">
-
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
     
     <style>
@@ -71,240 +75,146 @@
             50% { transform: translateY(-15px); }
         }
 
-        /* ⬇️ استایل عکس لوگو در هدر ⬇️ */
         .header-logo {
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 0 auto 20px;
-            display: block;
+            width: 130px; height: 130px; border-radius: 50%;
+            object-fit: cover; margin: 0 auto 20px; display: block;
             border: 4px solid var(--gold);
             box-shadow: 0 8px 25px rgba(0,0,0,0.3), inset 0 0 20px rgba(255,255,255,0.5);
-            background: white;
-            transition: var(--transition);
+            background: white; transition: var(--transition);
         }
         .header-logo:hover {
             transform: scale(1.08) rotate(5deg);
             box-shadow: 0 15px 35px rgba(212, 163, 115, 0.6);
         }
 
-        /* اسم فروشگاه با فونت بزرگ انگلیسی */
+        /* استایل اسم انگلیسی در خود سایت */
         header h1 {
             font-size: 3.5rem; font-weight: 900; color: #fff;
-            margin-bottom: 5px; text-shadow: 0 4px 20px rgba(0,0,0,0.25);
-            letter-spacing: 1px;
+            margin-bottom: 5px; text-shadow: 0 4px 20px rgba(0,0,0,0.25); letter-spacing: 1px;
         }
         header h1 span { color: var(--gold-light); }
-
-        /* زیرنویس کوچک‌تر: فروشگاه لوازم آرایشی */
+        
         header .tagline {
             font-size: 1.15rem; color: rgba(255,255,255,0.9);
             font-weight: 300; letter-spacing: 2px; margin-bottom: 25px;
         }
-
-        /* نام فروشنده */
         header .seller-name {
             display: inline-block; font-size: 1rem; font-weight: 600;
-            color: var(--primary-dark);
-            background: linear-gradient(135deg, #fff, var(--gold-light));
-            padding: 10px 28px; border-radius: 50px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            color: var(--primary-dark); background: linear-gradient(135deg, #fff, var(--gold-light));
+            padding: 10px 28px; border-radius: 50px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
 
-        /* دکمه‌های شبکه‌های اجتماعی در هدر */
-        .social-buttons {
-            display: flex; justify-content: center; gap: 15px;
-            margin-top: 30px; flex-wrap: wrap;
+        /* دکمه‌های ورود و شبکه‌های اجتماعی */
+        .header-actions {
+            position: absolute; top: 20px; left: 20px; z-index: 100;
         }
+        .btn-login-top {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 8px 20px; background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px); color: white;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 50px; font-weight: 600; font-size: 0.9rem;
+            cursor: pointer; transition: all 0.3s;
+        }
+        .btn-login-top:hover { background: white; color: var(--primary-dark); }
+
+        .social-buttons { display: flex; justify-content: center; gap: 15px; margin-top: 30px; flex-wrap: wrap; }
         .social-btn {
             display: inline-flex; align-items: center; gap: 10px;
-            padding: 12px 26px; border-radius: 50px;
-            text-decoration: none; color: white;
-            font-weight: 700; font-size: 0.95rem;
-            transition: var(--transition);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-            border: 2px solid rgba(255,255,255,0.3);
+            padding: 12px 26px; border-radius: 50px; text-decoration: none; color: white;
+            font-weight: 700; font-size: 0.95rem; transition: var(--transition);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2); border: 2px solid rgba(255,255,255,0.3);
         }
         .social-btn svg { width: 22px; height: 22px; fill: white; }
-        .social-btn.instagram {
-            background: linear-gradient(135deg, #f9ce34, #ee2a7b, #6228d7);
+        .social-btn.instagram { background: linear-gradient(135deg, #f9ce34, #ee2a7b, #6228d7); }
+        .social-btn.instagram:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 12px 30px rgba(238, 42, 123, 0.5); }
+        .social-btn.whatsapp { background: linear-gradient(135deg, #25d366, #128c7e); }
+        .social-btn.whatsapp:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5); }
+
+        /* مودال ورود */
+        .login-modal {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(4px);
+            z-index: 9999; align-items: center; justify-content: center;
         }
-        .social-btn.instagram:hover {
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: 0 12px 30px rgba(238, 42, 123, 0.5);
+        .login-modal.show { display: flex; }
+        .login-box {
+            background: white; padding: 30px; border-radius: 20px;
+            width: 90%; max-width: 380px; position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2); text-align: center;
         }
-        .social-btn.whatsapp {
-            background: linear-gradient(135deg, #25d366, #128c7e);
+        .close-btn {
+            position: absolute; top: 15px; right: 15px;
+            background: #fce7f3; color: var(--primary);
+            border: none; width: 30px; height: 30px; border-radius: 50%;
+            font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center;
         }
-        .social-btn.whatsapp:hover {
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5);
+        .close-btn:hover { background: var(--primary); color: white; }
+        .login-box h3 { color: var(--primary-dark); margin-bottom: 20px; }
+        .login-box input {
+            width: 100%; padding: 12px; margin-bottom: 15px;
+            border: 1px solid #ddd; border-radius: 10px; font-family: inherit;
+        }
+        .login-box button.submit {
+            width: 100%; padding: 12px; background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; font-family: inherit;
         }
 
-        /* کانتینر */
+        /* بقیه استایل‌های محصولات و فوتر مثل قبل */
         .container { max-width: 1250px; margin: 0 auto; padding: 0 20px; }
-
-        /* عنوان بخش */
         .section-title { text-align: center; margin-bottom: 40px; }
-        .section-title h2 {
-            font-size: 2rem; color: var(--primary-dark);
-            font-weight: 800; position: relative; display: inline-block;
-        }
+        .section-title h2 { font-size: 2rem; color: var(--primary-dark); font-weight: 800; position: relative; display: inline-block; }
         .section-title h2::after {
             content: ''; position: absolute; bottom: -10px; right: 50%;
             transform: translateX(50%); width: 80px; height: 4px;
             background: linear-gradient(90deg, var(--primary), var(--gold)); border-radius: 2px;
         }
-
-        /* شبکه محصولات */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px; padding: 10px 0 50px;
-        }
-
-        /* کارت محصول */
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; padding: 10px 0 50px; }
         .product-card {
             background: var(--white); border-radius: 24px; overflow: hidden;
             box-shadow: var(--shadow-soft); transition: var(--transition);
-            border: 1px solid rgba(212, 163, 115, 0.15);
-            display: flex; flex-direction: column; position: relative;
+            border: 1px solid rgba(212, 163, 115, 0.15); display: flex; flex-direction: column; position: relative;
         }
-        .product-card:hover {
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: var(--shadow-hover); border-color: var(--gold);
-        }
-
-        /* برچسب */
+        .product-card:hover { transform: translateY(-10px) scale(1.02); box-shadow: var(--shadow-hover); border-color: var(--gold); }
         .badge {
-            position: absolute; top: 15px; right: 15px;
-            background: linear-gradient(135deg, #ef4444, #dc2626);
-            color: white; padding: 5px 14px; border-radius: 20px;
-            font-size: 0.75rem; font-weight: 700; z-index: 10;
+            position: absolute; top: 15px; right: 15px; background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white; padding: 5px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; z-index: 10;
             box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
         }
-        .badge.new {
-            background: linear-gradient(135deg, var(--gold), #b8860b);
-            box-shadow: 0 4px 12px rgba(212, 163, 115, 0.5);
-        }
-
-        /* تصویر محصول */
+        .badge.new { background: linear-gradient(135deg, var(--gold), #b8860b); box-shadow: 0 4px 12px rgba(212, 163, 115, 0.5); }
         .product-image {
-            width: 100%; height: 260px;
-            background: linear-gradient(135deg, #faf5f0, #fce7f3);
-            display: flex; align-items: center; justify-content: center;
-            padding: 20px; position: relative; overflow: hidden;
+            width: 100%; height: 260px; background: linear-gradient(135deg, #faf5f0, #fce7f3);
+            display: flex; align-items: center; justify-content: center; padding: 20px; position: relative; overflow: hidden;
         }
-        .product-image::before {
-            content: ''; position: absolute; top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.8), transparent 60%);
-            opacity: 0; transition: opacity 0.4s;
-        }
-        .product-card:hover .product-image::before { opacity: 1; }
-        .product-image img {
-            max-width: 100%; max-height: 100%; object-fit: contain;
-            transition: var(--transition); position: relative; z-index: 1;
-        }
+        .product-image img { max-width: 100%; max-height: 100%; object-fit: contain; transition: var(--transition); position: relative; z-index: 1; }
         .product-card:hover .product-image img { transform: scale(1.1) rotate(-2deg); }
-
-        /* اطلاعات محصول */
         .product-info { padding: 22px; flex-grow: 1; display: flex; flex-direction: column; }
-        .product-brand {
-            font-size: 0.8rem; color: var(--gold); font-weight: 700;
-            text-transform: uppercase; letter-spacing: 1.5px;
-            margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
-        }
-        .product-brand::before {
-            content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold);
-        }
-        .product-name {
-            font-size: 1rem; font-weight: 600; color: var(--text-dark);
-            margin-bottom: 15px; line-height: 1.6; flex-grow: 1;
-        }
-        .product-price {
-            font-size: 1.35rem; font-weight: 800; color: var(--primary);
-            margin-top: 10px; padding-top: 15px;
-            border-top: 2px dashed var(--primary-light);
-            display: flex; align-items: center; gap: 6px;
-        }
+        .product-brand { font-size: 0.8rem; color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+        .product-brand::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+        .product-name { font-size: 0.95rem; font-weight: 600; color: var(--text-dark); margin-bottom: 15px; line-height: 1.6; flex-grow: 1; }
+        .product-price { font-size: 1.35rem; font-weight: 800; color: var(--primary); margin-top: 10px; padding-top: 15px; border-top: 2px dashed var(--primary-light); display: flex; align-items: center; gap: 6px; }
         .product-price span { font-size: 0.85rem; font-weight: 400; color: var(--text-muted); }
-
-        /* دکمه سفارش */
         .add-to-cart {
-            margin-top: 15px; width: 100%; padding: 12px; border: none;
-            border-radius: 14px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white; font-family: 'Vazirmatn', sans-serif;
-            font-size: 0.95rem; font-weight: 600; cursor: pointer;
+            margin-top: 15px; width: 100%; padding: 12px; border: none; border-radius: 14px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white;
+            font-family: 'Vazirmatn', sans-serif; font-size: 0.95rem; font-weight: 600; cursor: pointer;
             transition: var(--transition); position: relative; overflow: hidden;
         }
-        .add-to-cart::before {
-            content: ''; position: absolute; top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
-        }
-        .add-to-cart:hover::before { left: 100%; }
-        .add-to-cart:hover {
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(190, 24, 93, 0.35);
-        }
+        .add-to-cart:hover { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(190, 24, 93, 0.35); }
 
-        /* بخش برندها */
-        .brands-section {
-            background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(252, 231, 243, 0.6));
-            border-radius: 30px; padding: 40px 30px; margin: 30px 0 50px;
-            text-align: center; backdrop-filter: blur(10px);
-            border: 1px solid rgba(212, 163, 115, 0.2);
-        }
-        .brands-section h3 {
-            color: var(--primary-dark); font-size: 1.5rem;
-            margin-bottom: 25px; font-weight: 700;
-        }
+        .brands-section { background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(252, 231, 243, 0.6)); border-radius: 30px; padding: 40px 30px; margin: 30px 0 50px; text-align: center; backdrop-filter: blur(10px); border: 1px solid rgba(212, 163, 115, 0.2); }
+        .brands-section h3 { color: var(--primary-dark); font-size: 1.5rem; margin-bottom: 25px; font-weight: 700; }
         .brands-list { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .brand-chip {
-            background: white; padding: 12px 30px; border-radius: 50px;
-            font-weight: 700; color: var(--primary);
-            box-shadow: 0 4px 15px rgba(190, 24, 93, 0.1);
-            transition: var(--transition); border: 2px solid transparent; cursor: pointer;
-        }
-        .brand-chip:hover {
-            border-color: var(--gold); transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(212, 163, 115, 0.3); color: var(--gold);
-        }
+        .brand-chip { background: white; padding: 12px 30px; border-radius: 50px; font-weight: 700; color: var(--primary); box-shadow: 0 4px 15px rgba(190, 24, 93, 0.1); transition: var(--transition); border: 2px solid transparent; cursor: pointer; }
+        .brand-chip:hover { border-color: var(--gold); transform: translateY(-3px); box-shadow: 0 8px 25px rgba(212, 163, 115, 0.3); color: var(--gold); }
 
-        /* فوتر */
-        footer {
-            background: linear-gradient(135deg, var(--primary-dark), #4a0d2a);
-            color: rgba(255,255,255,0.85); padding: 50px 20px 25px;
-            margin-top: 60px; border-radius: 40px 40px 0 0; text-align: center;
-        }
-        footer .footer-brand {
-            font-size: 1.8rem; font-weight: 900;
-            color: var(--gold-light); margin-bottom: 5px;
-        }
-        footer .footer-sub {
-            font-size: 0.95rem; color: rgba(255,255,255,0.7);
-            margin-bottom: 25px; letter-spacing: 1px;
-        }
-
-        /* دکمه‌های اجتماعی فوتر */
-        .footer-socials {
-            display: flex; justify-content: center; gap: 15px;
-            flex-wrap: wrap; margin: 25px 0;
-        }
+        footer { background: linear-gradient(135deg, var(--primary-dark), #4a0d2a); color: rgba(255,255,255,0.85); padding: 50px 20px 25px; margin-top: 60px; border-radius: 40px 40px 0 0; text-align: center; }
+        footer .footer-brand { font-size: 1.8rem; font-weight: 900; color: var(--gold-light); margin-bottom: 5px; }
+        footer .footer-sub { font-size: 0.95rem; color: rgba(255,255,255,0.7); margin-bottom: 25px; letter-spacing: 1px; }
+        .footer-socials { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin: 25px 0; }
         .footer-socials .social-btn { padding: 10px 22px; font-size: 0.9rem; }
+        footer .copyright { margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(212, 163, 115, 0.3); font-size: 0.85rem; color: rgba(255,255,255,0.6); }
 
-        footer .copyright {
-            margin-top: 30px; padding-top: 20px;
-            border-top: 1px solid rgba(212, 163, 115, 0.3);
-            font-size: 0.85rem; color: rgba(255,255,255,0.6);
-        }
-
-        /* ریسپانسیو */
         @media (max-width: 768px) {
             header h1 { font-size: 2.5rem; }
             .header-logo { width: 100px; height: 100px; }
@@ -312,129 +222,152 @@
             .products-grid { grid-template-columns: 1fr; gap: 20px; }
             .section-title h2 { font-size: 1.5rem; }
             .social-btn { padding: 10px 20px; font-size: 0.85rem; }
+            .header-actions { top: 10px; left: 10px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- نوار اعلان -->
     <div class="announcement-bar">
         🚚 ارسال رایگان برای خریدهای بالای ۵۰۰,۰۰۰ تومان | 💝 ۱۰٪ تخفیف ویژه مشتریان جدید
     </div>
 
-    <!-- هدر -->
     <header>
-        <!-- ⬇️ عکس لوگو بالای اسم ⬇️ -->
-        <img src="logo.png" alt="لوگوی PrrinceBeauty" class="header-logo">
+        <!-- دکمه ورود در گوشه بالا سمت چپ -->
+        <div class="header-actions">
+            <button class="btn-login-top" onclick="openLogin()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                ورود / عضویت
+            </button>
+        </div>
 
+        <img src="logo.png" alt="لوگوی فروشگاه" class="header-logo">
+        
+        <!-- اینجا اسم انگلیسی فقط برای ظاهر خود سایت است -->
         <h1>Prrince<span>Beauty</span></h1>
         <p class="tagline">فروشگاه لوازم آرایشی</p>
         <div class="seller-name">👑 مدیریت: فاطمه حریت</div>
 
-        <!-- دکمه‌های شبکه‌های اجتماعی -->
         <div class="social-buttons">
             <a href="https://www.instagram.com/prrincebeautty?utm_source=ig_web_button_share_sheet&obrf=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" class="social-btn instagram">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                </svg>
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                 اینستاگرام
             </a>
             <a href="https://wa.me/9911171445" target="_blank" rel="noopener" class="social-btn whatsapp">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-                </svg>
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
                 واتساپ
             </a>
         </div>
     </header>
 
     <div class="container">
-
         <div class="section-title">
             <h2>محصولات پرفروش</h2>
         </div>
 
         <div class="products-grid">
-
             <!-- محصول ۱: بیول -->
             <div class="product-card">
-                <div class="badge new">جدید</div>
+                <div class="badge">٪۱۰ تخفیف</div>
                 <div class="product-image">
-                    <img src="https://storage.khanoumi.com/ProductImages/71502-2024112416273330.jpg?w=175" alt="اسپری مو بیول">
+                    <img src="https://storage.khanoumi.com/ProductImages/71502-2024112416273330.jpg" alt="لوسیون بیول">
                 </div>
                 <div class="product-info">
                     <div class="product-brand">Biol | بیول</div>
-                    <div class="product-name">اسپری مو ۱۰ کاره بیول حجم ۴۰۰ میلی‌لیتر</div>
-                    <div class="product-price">۴۸۲,۵۴۰ <span>تومان</span></div>
+                    <div class="product-name">لوسیون مرطوب کننده بدن مناسب پوست نرمال و خشک حجم ۲۵۰ میل</div>
+                    <div class="product-price">۴۴۱,۰۰۰ <span>تومان</span></div>
                     <button class="add-to-cart">🛒 افزودن به سبد خرید</button>
                 </div>
             </div>
 
             <!-- محصول ۲: کامان -->
             <div class="product-card">
+                <div class="badge">٪۱۷ تخفیف</div>
                 <div class="product-image">
-                    <img src="https://storage.khanoumi.com/ProductImages/5bc24aaf30354c0aa0bcdcab5881db88.jpg?w=104" alt="کرم کامان">
+                    <img src="https://storage.khanoumi.com/ProductImages/5bc24aaf30354c0aa0bcdcab5881db88.jpg" alt="لوسیون کامان">
                 </div>
                 <div class="product-info">
                     <div class="product-brand">Comeon | کامان</div>
-                    <div class="product-name">کرم آبرسان صورت کامان با هیالورونیک اسید و کلاژن حجم ۲۰۰ میلی‌لیتر</div>
-                    <div class="product-price">۴۳۰,۰۰۰ <span>تومان</span></div>
+                    <div class="product-name">لوسیون بدن و مرطوب کننده با رایحه آووکادو و گل ارکیده حجم ۵۱۰ میلی‌لیتر</div>
+                    <div class="product-price">۷۴۲,۷۳۰ <span>تومان</span></div>
                     <button class="add-to-cart">🛒 افزودن به سبد خرید</button>
                 </div>
             </div>
 
             <!-- محصول ۳: اردن -->
             <div class="product-card">
-                <div class="badge">٪۳۰ تخفیف</div>
+                <div class="badge">٪۱۰ تخفیف</div>
                 <div class="product-image">
-                    <img src="https://storage.khanoumi.com/ProductImages/31489-20248271553944.jpg?w=104" alt="سرم اردن">
+                    <img src="https://storage.khanoumi.com/ProductImages/31489-20248271553944.jpg" alt="لوسیون آردن">
                 </div>
                 <div class="product-info">
-                    <div class="product-brand">Arden | اردن</div>
-                    <div class="product-name">سرم لیفتینگ صورت و گردن اردن حجم ۴۰ میلی‌لیتر</div>
-                    <div class="product-price">۱,۱۰۰,۶۴۰ <span>تومان</span></div>
+                    <div class="product-brand">Ardene | آردن</div>
+                    <div class="product-name">لوسیون مرطوب کننده قوی بدن مدل Dry Relief حاوی اوره ۱۰ درصد حجم ۲۰۰ میلی‌لیتر</div>
+                    <div class="product-price">۹۵۱,۵۷۰ <span>تومان</span></div>
                     <button class="add-to-cart">🛒 افزودن به سبد خرید</button>
                 </div>
             </div>
 
-        </div>
+            <!-- محصول ۴: ژوت -->
+            <div class="product-card">
+                <div class="badge">٪۴۳ تخفیف</div>
+                <div class="product-image">
+                    <img src="https://storage.khanoumi.com/ProductImages/e370a24fb12e49c39f289ca731d8998f.jpg" alt="کرم ژوت">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Jute | ژوت</div>
+                    <div class="product-name">کرم مرطوب کننده هیدرا اکتیو تیوپی ۷۰ میلی‌لیتر</div>
+                    <div class="product-price">۲۸۶,۸۸۰ <span>تومان</span></div>
+                    <button class="add-to-cart">🛒 افزودن به سبد خرید</button>
+                </div>
+            </div>
 
-        <!-- بخش برندها -->
-        <div class="brands-section">
-            <h3>🏷️ برندهای موجود</h3>
-            <div class="brands-list">
-                <div class="brand-chip">Arden</div>
-                <div class="brand-chip">Biol</div>
-                <div class="brand-chip">Comeon</div>
+            <!-- محصول ۵: وچه -->
+            <div class="product-card">
+                <div class="badge">٪۴۰ تخفیف</div>
+                <div class="product-image">
+                    <img src="https://storage.khanoumi.com/ProductImages/53903dc9e23d4f36bddf0810be37fa8a.jpg" alt="فوم وچه">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Voche | وچه</div>
+                    <div class="product-name">فوم شستشوی صورت مناسب پوست چرب و مستعد آکنه حجم ۱۵۰ میلی‌لیتر</div>
+                    <div class="product-price">۵۲۲,۰۰۰ <span>تومان</span></div>
+                    <button class="add-to-cart">🛒 افزودن به سبد خرید</button>
+                </div>
+            </div>
+
+            <!-- محصول ۶: سی گل -->
+            <div class="product-card">
+                <div class="badge">٪۳۵ تخفیف</div>
+                <div class="product-image">
+                    <img src="https://storage.khanoumi.com/ProductImages/SCSG750ML-20241021144829149.jpg" alt="ضد آفتاب سی گل">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Seagull | سی گل</div>
+                    <div class="product-name">کرم ضد آفتاب بی رنگ با SPF60 مناسب پوست معمولی تا چرب حجم ۵۰ میلی‌لیتر</div>
+                    <div class="product-price">۴۴۸,۵۰۰ <span>تومان</span></div>
+                    <button class="add-to-cart">🛒 افزودن به سبد خرید</button>
+                </div>
             </div>
         </div>
 
+        <div class="brands-section">
+            <h3>🏷️ برندهای موجود</h3>
+            <div class="brands-list">
+                <div class="brand-chip">Biol</div>
+                <div class="brand-chip">Comeon</div>
+                <div class="brand-chip">Ardene</div>
+                <div class="brand-chip">Jute</div>
+                <div class="brand-chip">Voche</div>
+                <div class="brand-chip">Seagull</div>
+            </div>
+        </div>
     </div>
 
-    <!-- فوتر -->
     <footer>
+        <!-- در فوتر هم اسم انگلیسی می‌تواند باشد، اما برای گوگل مهم نیست -->
         <div class="footer-brand">PrrinceBeauty</div>
         <p class="footer-sub">فروشگاه لوازم آرایشی</p>
-
         <div class="footer-socials">
             <a href="https://www.instagram.com/prrincebeautty?utm_source=ig_web_button_share_sheet&obrf=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" class="social-btn instagram">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                </svg>
-                اینستاگرام
-            </a>
-            <a href="https://wa.me/9911171445" target="_blank" rel="noopener" class="social-btn whatsapp">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-                </svg>
-                واتساپ: 9911171445
-            </a>
-        </div>
-
-        <div class="copyright">
-            © ۲۰۲۵ PrrinceBeauty | تمامی حقوق محفوظ است.
-        </div>
-    </footer>
-
-</body>
-</html>
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.
