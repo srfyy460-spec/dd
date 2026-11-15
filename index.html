@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- ⬇️ تایتل و توضیحات: فقط اسم فارسی برای گوگل ⬇️ -->
-    <title>فروشگاه لوازم آرایشی پرنس بیوتی</title>
-    <meta name="description" content="خرید آنلاین بهترین لوازم آرایشی و بهداشتی از برندهای معتبر مانند بیول، کامان و اردن با مدیریت فاطمه حریت. فروشگاه اینترنتی پرنس بیوتی.">
-    <meta property="og:title" content="فروشگاه لوازم آرایشی پرنس بیوتی">
-    <meta property="og:description" content="خرید آنلاین بهترین لوازم آرایشی و بهداشتی از برندهای معتبر">
+    <!-- ⬇️ کلمات کلیدی و سئو برای گوگل ⬇️ -->
+    <title>لوازم آرایشی پرنس بیوتی | فروشگاه فاطمه حریت</title>
+    <meta name="description" content="فروشگاه لوازم آرایشی پرنس بیوتی با مدیریت فاطمه حریت. خرید آنلاین انواع لوازم آرایشی، بهداشتی و مراقبت پوست با بهترین قیمت از برندهای معتبر بیول، کامان و اردن.">
+    <meta name="keywords" content="لوازم آرایشی, پرنس بیوتی, PrrinceBeauty, فروشگاه فاطمه حریت, خرید لوازم آرایشی, بیول, کامان, اردن">
+    <meta property="og:title" content="لوازم آرایشی پرنس بیوتی | فروشگاه فاطمه حریت">
+    <meta property="og:description" content="خرید آنلاین لوازم آرایشی و بهداشتی با مدیریت فاطمه حریت">
+    <meta property="og:type" content="website">
     <meta property="og:url" content="https://srfyy460-spec.github.io/dd/">
     
     <link rel="icon" type="image/png" href="logo.png">
@@ -104,20 +106,7 @@
             padding: 10px 28px; border-radius: 50px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
 
-        /* دکمه‌های ورود و شبکه‌های اجتماعی */
-        .header-actions {
-            position: absolute; top: 20px; left: 20px; z-index: 100;
-        }
-        .btn-login-top {
-            display: inline-flex; align-items: center; gap: 8px;
-            padding: 8px 20px; background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(8px); color: white;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: 50px; font-weight: 600; font-size: 0.9rem;
-            cursor: pointer; transition: all 0.3s;
-        }
-        .btn-login-top:hover { background: white; color: var(--primary-dark); }
-
+        /* دکمه‌های شبکه‌های اجتماعی */
         .social-buttons { display: flex; justify-content: center; gap: 15px; margin-top: 30px; flex-wrap: wrap; }
         .social-btn {
             display: inline-flex; align-items: center; gap: 10px;
@@ -131,36 +120,7 @@
         .social-btn.whatsapp { background: linear-gradient(135deg, #25d366, #128c7e); }
         .social-btn.whatsapp:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5); }
 
-        /* مودال ورود */
-        .login-modal {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(4px);
-            z-index: 9999; align-items: center; justify-content: center;
-        }
-        .login-modal.show { display: flex; }
-        .login-box {
-            background: white; padding: 30px; border-radius: 20px;
-            width: 90%; max-width: 380px; position: relative;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2); text-align: center;
-        }
-        .close-btn {
-            position: absolute; top: 15px; right: 15px;
-            background: #fce7f3; color: var(--primary);
-            border: none; width: 30px; height: 30px; border-radius: 50%;
-            font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center;
-        }
-        .close-btn:hover { background: var(--primary); color: white; }
-        .login-box h3 { color: var(--primary-dark); margin-bottom: 20px; }
-        .login-box input {
-            width: 100%; padding: 12px; margin-bottom: 15px;
-            border: 1px solid #ddd; border-radius: 10px; font-family: inherit;
-        }
-        .login-box button.submit {
-            width: 100%; padding: 12px; background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; font-family: inherit;
-        }
-
-        /* بقیه استایل‌های محصولات و فوتر مثل قبل */
+        /* استایل‌های محصولات */
         .container { max-width: 1250px; margin: 0 auto; padding: 0 20px; }
         .section-title { text-align: center; margin-bottom: 40px; }
         .section-title h2 { font-size: 2rem; color: var(--primary-dark); font-weight: 800; position: relative; display: inline-block; }
@@ -222,7 +182,6 @@
             .products-grid { grid-template-columns: 1fr; gap: 20px; }
             .section-title h2 { font-size: 1.5rem; }
             .social-btn { padding: 10px 20px; font-size: 0.85rem; }
-            .header-actions { top: 10px; left: 10px; }
         }
     </style>
 </head>
@@ -233,17 +192,8 @@
     </div>
 
     <header>
-        <!-- دکمه ورود در گوشه بالا سمت چپ -->
-        <div class="header-actions">
-            <button class="btn-login-top" onclick="openLogin()">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                ورود / عضویت
-            </button>
-        </div>
-
         <img src="logo.png" alt="لوگوی فروشگاه" class="header-logo">
         
-        <!-- اینجا اسم انگلیسی فقط برای ظاهر خود سایت است -->
         <h1>Prrince<span>Beauty</span></h1>
         <p class="tagline">فروشگاه لوازم آرایشی</p>
         <div class="seller-name">👑 مدیریت: فاطمه حریت</div>
@@ -365,9 +315,12 @@
     </div>
 
     <footer>
-        <!-- در فوتر هم اسم انگلیسی می‌تواند باشد، اما برای گوگل مهم نیست -->
         <div class="footer-brand">PrrinceBeauty</div>
         <p class="footer-sub">فروشگاه لوازم آرایشی</p>
         <div class="footer-socials">
             <a href="https://www.instagram.com/prrincebeautty?utm_source=ig_web_button_share_sheet&obrf=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" class="social-btn instagram">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                اینستاگرام
+            </a>
+            <a href="https://wa.me/9911171445" target="_blank" rel="noopener" class="social-btn whatsapp">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074
