@@ -144,12 +144,13 @@
             border: none; border-radius: 12px; font-family: inherit; font-size: 1rem; font-weight: bold; cursor: pointer;
         }
 
-        /* پنل مدیریت مخفی */
-        .admin-panel-modal {
+        /* پنل مدیریت */
+        .admin-panel-modal, .admin-dashboard {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.8); z-index: 3000; justify-content: center; align-items: center;
         }
-        .admin-panel-modal.show { display: flex; }
+        .admin-panel-modal.show, .admin-dashboard.show { display: flex; flex-direction: column; }
+        
         .admin-content {
             background: var(--white); padding: 40px; border-radius: 20px;
             width: 90%; max-width: 400px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.5);
@@ -162,15 +163,19 @@
             width: 100%; padding: 12px; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;
         }
         .admin-error { color: red; font-size: 0.85rem; margin-bottom: 10px; }
-        
-        /* پنل مدیریت (بعد از ورود) */
+
         .admin-dashboard {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #f4f4f4; z-index: 4000; padding: 40px; text-align: center;
+            background: #f4f4f4; align-items: flex-start; padding: 20px; overflow-y: auto;
         }
-        .admin-dashboard.show { display: block; }
-        .admin-dashboard h2 { color: var(--primary-dark); margin-bottom: 20px; }
-        .admin-dashboard p { color: #666; }
+        .dashboard-container { width: 100%; max-width: 800px; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .dashboard-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 2px solid #eee; padding-bottom: 15px; }
+        .dashboard-header h2 { color: var(--primary-dark); }
+        .logout-btn { background: #ef4444; color: white; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; }
+        
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+        .form-group input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; }
+        .product-item { display: flex; justify-content: space-between; padding: 10px; background: #f9f9f9; margin-bottom: 5px; border-radius: 5px; }
     </style>
 </head>
 <body>
@@ -186,8 +191,8 @@
 
     <div class="container">
         <div class="section-title"><h2>محصولات پرفروش</h2></div>
-        <div class="products-grid">
-            <!-- محصولات (همان‌ها که بودند) -->
+        <div class="products-grid" id="productsGrid">
+            <!-- محصول ۱: بیول -->
             <div class="product-card">
                 <div class="product-image"><img src="https://storage.khanoumi.com/ProductImages/71502-2024112416273330.jpg" alt="بیول"></div>
                 <div class="product-info">
@@ -197,6 +202,8 @@
                     <button class="add-to-cart" onclick="addToCart('لوسیون بیول', 441000)">🛒 افزودن به سبد</button>
                 </div>
             </div>
+
+            <!-- محصول ۲: کامان -->
             <div class="product-card">
                 <div class="product-image"><img src="https://storage.khanoumi.com/ProductImages/5bc24aaf30354c0aa0bcdcab5881db88.jpg" alt="کامان"></div>
                 <div class="product-info">
@@ -206,6 +213,8 @@
                     <button class="add-to-cart" onclick="addToCart('لوسیون کامان', 742730)">🛒 افزودن به سبد</button>
                 </div>
             </div>
+
+            <!-- محصول ۳: اردن -->
             <div class="product-card">
                 <div class="product-image"><img src="https://storage.khanoumi.com/ProductImages/31489-20248271553944.jpg" alt="آردن"></div>
                 <div class="product-info">
@@ -215,6 +224,8 @@
                     <button class="add-to-cart" onclick="addToCart('لوسیون آردن', 951570)">🛒 افزودن به سبد</button>
                 </div>
             </div>
+
+            <!-- محصول ۴: ژوت -->
             <div class="product-card">
                 <div class="product-image"><img src="https://storage.khanoumi.com/ProductImages/e370a24fb12e49c39f289ca731d8998f.jpg" alt="ژوت"></div>
                 <div class="product-info">
@@ -224,6 +235,8 @@
                     <button class="add-to-cart" onclick="addToCart('کرم ژوت', 286880)">🛒 افزودن به سبد</button>
                 </div>
             </div>
+
+            <!-- محصول ۵: وچه -->
             <div class="product-card">
                 <div class="product-image"><img src="https://storage.khanoumi.com/ProductImages/53903dc9e23d4f36bddf0810be37fa8a.jpg" alt="وچه"></div>
                 <div class="product-info">
@@ -233,6 +246,8 @@
                     <button class="add-to-cart" onclick="addToCart('فوم وچه', 522000)">🛒 افزودن به سبد</button>
                 </div>
             </div>
+
+            <!-- محصول ۶: سی گل -->
             <div class="product-card">
                 <div class="product-image"><img src="https://storage.khanoumi.com/ProductImages/SCSG750ML-20241021144829149.jpg" alt="سی گل"></div>
                 <div class="product-info">
@@ -278,7 +293,7 @@
         </div>
     </div>
 
-    <!-- پنل مدیریت مخفی (ورود رمز) -->
+    <!-- پنل مدیریت (ورود) -->
     <div class="admin-panel-modal" id="adminLoginModal">
         <div class="admin-content">
             <h2>🔐 ورود به پنل مدیریت</h2>
@@ -288,25 +303,51 @@
         </div>
     </div>
 
-    <!-- پنل مدیریت (بعد از ورود) -->
+    <!-- پنل مدیریت (داشبورد) -->
     <div class="admin-dashboard" id="adminDashboard">
-        <h2>✅ خوش آمدید به پنل مدیریت</h2>
-        <p>این یک پنل تستی است. هنوز هیچ امکاناتی به آن اضافه نشده است.</p>
+        <div class="dashboard-container">
+            <div class="dashboard-header">
+                <h2>✅ پنل مدیریت</h2>
+                <button class="logout-btn" onclick="logoutAdmin()">خروج</button>
+            </div>
+            
+            <h3>مدیریت محصولات</h3>
+            <div class="form-group">
+                <label>نام محصول</label>
+                <input type="text" id="newProductName" placeholder="مثلاً لوسیون بیول">
+            </div>
+            <div class="form-group">
+                <label>برند</label>
+                <input type="text" id="newProductBrand" placeholder="مثلاً Biol">
+            </div>
+            <div class="form-group">
+                <label>قیمت (تومان)</label>
+                <input type="number" id="newProductPrice" placeholder="441000">
+            </div>
+            <div class="form-group">
+                <label>لینک عکس</label>
+                <input type="text" id="newProductImage" placeholder="https://...">
+            </div>
+            <button onclick="addProductToPanel()" class="btn-submit" style="margin-bottom: 20px;">➕ افزودن محصول (موقت)</button>
+            
+            <h3>لیست محصولات</h3>
+            <div id="productListContainer"></div>
+            
+            <br>
+            <button onclick="exportProductsCode()" class="btn-submit" style="background: #25d366;">📥 دریافت کد برای گیت‌هاب</button>
+        </div>
     </div>
 
     <script>
-        // آرایه کدهای تخفیف
+        // --- بخش سبد خرید و تخفیف ---
         let VALID_DISCOUNTS = [];
         
-        // بارگذاری کدهای تخفیف از فایل TAKHFIF.txt
         async function loadDiscounts() {
             try {
                 const response = await fetch('TAKHFIF.txt');
                 if (!response.ok) throw new Error('File not found');
-                
                 const text = await response.text();
                 const lines = text.trim().split('\n');
-                
                 VALID_DISCOUNTS = [];
                 lines.forEach(line => {
                     const parts = line.split(';');
@@ -318,9 +359,7 @@
                         }
                     }
                 });
-            } catch (e) {
-                console.error("Error loading discounts:", e);
-            }
+            } catch (e) { console.error("Error loading discounts:", e); }
         }
         loadDiscounts();
 
@@ -365,7 +404,6 @@
             document.getElementById('cartCount').innerText = count;
         }
 
-        // ⬇️ منطق مخفی پنل مدیریت ⬇️
         function applyDiscount() {
             const input = document.getElementById('discountInput').value.trim();
             const msg = document.getElementById('discountMessage');
@@ -373,7 +411,7 @@
             // چک کردن برای باز کردن پنل مدیریت
             if (input === 'owner_froshghah') {
                 document.getElementById('adminLoginModal').classList.add('show');
-                document.getElementById('discountInput').value = ''; // پاک کردن فیلد
+                document.getElementById('discountInput').value = '';
                 msg.innerText = '';
                 return;
             }
@@ -386,7 +424,7 @@
 
             if (VALID_DISCOUNTS.length === 0) {
                 msg.style.color = 'red';
-                msg.innerText = 'سیستم تخفیف در حال بارگذاری است. لطفاً چند لحظه صبر کنید.';
+                msg.innerText = 'سیستم تخفیف در حال بارگذاری است...';
                 return;
             }
 
@@ -411,31 +449,6 @@
                 appliedDiscountPercent = 0;
             }
             renderCart();
-        }
-
-        // چک کردن رمز عبور مدیریت
-        async function checkAdminPassword() {
-            const inputPass = document.getElementById('adminPasswordInput').value.trim();
-            const errorEl = document.getElementById('adminError');
-            errorEl.innerText = '';
-
-            try {
-                const response = await fetch('ownerpanellpssrowwlpakdoweghithabfatemeh.txt');
-                if (!response.ok) throw new Error('File not found');
-                const correctPass = (await response.text()).trim();
-
-                if (inputPass === correctPass) {
-                    // رمز درست است
-                    document.getElementById('adminLoginModal').classList.remove('show');
-                    document.getElementById('adminDashboard').classList.add('show');
-                    closeCart(); // بستن سبد خرید
-                } else {
-                    errorEl.innerText = 'رمز عبور اشتباه است!';
-                }
-            } catch (e) {
-                errorEl.innerText = 'خطا در سیستم مدیریت. فایل رمز پیدا نشد.';
-                console.error(e);
-            }
         }
 
         function renderCart() {
@@ -514,6 +527,119 @@
         }
 
         updateCartUI();
+
+        // --- بخش پنل مدیریت ---
+        let adminProducts = JSON.parse(localStorage.getItem('adminProducts')) || [];
+
+        async function checkAdminPassword() {
+            const inputPass = document.getElementById('adminPasswordInput').value.trim();
+            const errorEl = document.getElementById('adminError');
+            errorEl.innerText = '';
+
+            try {
+                const response = await fetch('ownerpanellpssrowwlpakdoweghithabfatemeh.txt');
+                if (!response.ok) throw new Error('File not found');
+                const correctPass = (await response.text()).trim();
+
+                if (inputPass === correctPass) {
+                    document.getElementById('adminLoginModal').classList.remove('show');
+                    document.getElementById('adminDashboard').classList.add('show');
+                    closeCart();
+                    loadAdminProductsList();
+                } else {
+                    errorEl.innerText = 'رمز عبور اشتباه است!';
+                }
+            } catch (e) {
+                errorEl.innerText = 'خطا در سیستم مدیریت. فایل رمز پیدا نشد.';
+            }
+        }
+
+        function logoutAdmin() {
+            document.getElementById('adminDashboard').classList.remove('show');
+        }
+
+        function addProductToPanel() {
+            const name = document.getElementById('newProductName').value;
+            const brand = document.getElementById('newProductBrand').value;
+            const price = document.getElementById('newProductPrice').value;
+            const image = document.getElementById('newProductImage').value;
+
+            if (!name || !brand || !price) {
+                alert('لطفاً نام، برند و قیمت را وارد کنید.');
+                return;
+            }
+
+            const newProd = { name, brand, price: parseInt(price), image };
+            adminProducts.push(newProd);
+            localStorage.setItem('adminProducts', JSON.stringify(adminProducts));
+            
+            loadAdminProductsList();
+            alert('محصول به لیست موقت اضافه شد!');
+            
+            document.getElementById('newProductName').value = '';
+            document.getElementById('newProductBrand').value = '';
+            document.getElementById('newProductPrice').value = '';
+            document.getElementById('newProductImage').value = '';
+        }
+
+        function loadAdminProductsList() {
+            const container = document.getElementById('productListContainer');
+            if (adminProducts.length === 0) {
+                container.innerHTML = '<p>هیچ محصولی اضافه نشده است.</p>';
+                return;
+            }
+
+            let html = '';
+            adminProducts.forEach((p, index) => {
+                html += `
+                    <div class="product-item">
+                        <span>${p.name} (${p.brand}) - ${p.price.toLocaleString('fa-IR')} تومان</span>
+                        <button onclick="removeProduct(${index})" style="color:red; border:none; background:none; cursor:pointer;">حذف</button>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        function removeProduct(index) {
+            adminProducts.splice(index, 1);
+            localStorage.setItem('adminProducts', JSON.stringify(adminProducts));
+            loadAdminProductsList();
+        }
+
+        function exportProductsCode() {
+            if (adminProducts.length === 0) {
+                alert('لیست محصولات خالی است.');
+                return;
+            }
+
+            let htmlCode = '<!-- محصولات جدید (کپی شده از پنل مدیریت) -->\n';
+            adminProducts.forEach(p => {
+                htmlCode += `
+            <div class="product-card">
+                <div class="product-image"><img src="${p.image || 'logo.png'}" alt="${p.name}"></div>
+                <div class="product-info">
+                    <div class="product-brand">${p.brand}</div>
+                    <div class="product-name">${p.name}</div>
+                    <div class="product-price">${p.price.toLocaleString('fa-IR')} <span>تومان</span></div>
+                    <button class="add-to-cart" onclick="addToCart('${p.name}', ${p.price})">🛒 افزودن به سبد</button>
+                </div>
+            </div>
+                `;
+            });
+
+            const newWindow = window.open('', '_blank');
+            newWindow.document.write(`
+                <html dir="rtl"><head><title>کد محصولات</title>
+                <style>body { font-family: Tahoma; padding: 20px; background: #1e1e1e; color: #d4d4d4; }
+                pre { background: #2d2d2d; padding: 15px; border-radius: 8px; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word; }</style>
+                </head><body>
+                <h2>کد HTML محصولات شما (برای کپی در index.html):</h2>
+                <pre>${htmlCode.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</pre>
+                <p>این کد را کپی کنید و در فایل index.html خود، به جای محصولات قبلی قرار دهید.</p>
+                </body></html>
+            `);
+        }
     </script>
 
 </body>
