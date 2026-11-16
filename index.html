@@ -8,6 +8,10 @@
     <title>لوازم آرایشی پرنس بیوتی | فروشگاه فاطمه حریت</title>
     <meta name="description" content="فروشگاه لوازم آرایشی پرنس بیوتی با مدیریت فاطمه حریت. خرید آنلاین انواع لوازم آرایشی، بهداشتی و مراقبت پوست با بهترین قیمت از برندهای معتبر بیول، کامان و اردن.">
     <meta name="keywords" content="لوازم آرایشی, پرنس بیوتی, PrrinceBeauty, فروشگاه فاطمه حریت, خرید لوازم آرایشی, بیول, کامان, اردن">
+    <meta property="og:title" content="لوازم آرایشی پرنس بیوتی | فروشگاه فاطمه حریت">
+    <meta property="og:description" content="خرید آنلاین لوازم آرایشی و بهداشتی با مدیریت فاطمه حریت">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://srfyy460-spec.github.io/dd/">
     
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="apple-touch-icon" href="logo.png">
@@ -37,32 +41,55 @@
             min-height: 100vh;
         }
 
+        /* نوار اعلان */
         .announcement-bar {
             background: linear-gradient(90deg, var(--primary-dark), var(--primary), var(--gold));
             color: white; text-align: center; padding: 10px 20px;
             font-size: 0.9rem; font-weight: 500; letter-spacing: 0.5px;
+            animation: shimmer 3s infinite; background-size: 200% 100%;
+        }
+        @keyframes shimmer {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
+        /* هدر */
         header {
             position: relative; text-align: center; padding: 40px 20px 50px;
             background: linear-gradient(135deg, rgba(190, 24, 93, 0.95), rgba(131, 24, 67, 0.9)),
                         radial-gradient(circle at 20% 80%, var(--gold), transparent 50%);
             border-radius: 0 0 40px 40px; margin-bottom: 50px;
-            box-shadow: 0 15px 50px rgba(131, 24, 67, 0.3);
+            box-shadow: 0 15px 50px rgba(131, 24, 67, 0.3); overflow: hidden;
         }
-        
+        header::before {
+            content: '✨'; position: absolute; top: 20px; right: 30px;
+            font-size: 2rem; opacity: 0.3; animation: float 4s ease-in-out infinite;
+        }
+        header::after {
+            content: '💎'; position: absolute; bottom: 30px; left: 40px;
+            font-size: 2.5rem; opacity: 0.25; animation: float 5s ease-in-out infinite reverse;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
         .header-logo {
             width: 130px; height: 130px; border-radius: 50%;
             object-fit: cover; margin: 0 auto 20px; display: block;
             border: 4px solid var(--gold);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3), inset 0 0 20px rgba(255,255,255,0.5);
             background: white; transition: var(--transition);
         }
-        .header-logo:hover { transform: scale(1.08) rotate(5deg); }
+        .header-logo:hover {
+            transform: scale(1.08) rotate(5deg);
+            box-shadow: 0 15px 35px rgba(212, 163, 115, 0.6);
+        }
 
         header h1 {
             font-size: 3.5rem; font-weight: 900; color: #fff;
-            margin-bottom: 5px; text-shadow: 0 4px 20px rgba(0,0,0,0.25);
+            margin-bottom: 5px; text-shadow: 0 4px 20px rgba(0,0,0,0.25); letter-spacing: 1px;
         }
         header h1 span { color: var(--gold-light); }
         
@@ -76,72 +103,129 @@
             padding: 10px 28px; border-radius: 50px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
 
+        /* دکمه‌های شبکه‌های اجتماعی */
+        .social-buttons { display: flex; justify-content: center; gap: 15px; margin-top: 30px; flex-wrap: wrap; }
+        .social-btn {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 12px 26px; border-radius: 50px; text-decoration: none; color: white;
+            font-weight: 700; font-size: 0.95rem; transition: var(--transition);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2); border: 2px solid rgba(255,255,255,0.3);
+        }
+        .social-btn svg { width: 22px; height: 22px; fill: white; }
+        .social-btn.instagram { background: linear-gradient(135deg, #f9ce34, #ee2a7b, #6228d7); }
+        .social-btn.instagram:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 12px 30px rgba(238, 42, 123, 0.5); }
+        .social-btn.whatsapp { background: linear-gradient(135deg, #25d366, #128c7e); }
+        .social-btn.whatsapp:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5); }
+
+        /* استایل‌های محصولات */
         .container { max-width: 1250px; margin: 0 auto; padding: 0 20px; }
         .section-title { text-align: center; margin-bottom: 40px; }
         .section-title h2 { font-size: 2rem; color: var(--primary-dark); font-weight: 800; position: relative; display: inline-block; }
-        
+        .section-title h2::after {
+            content: ''; position: absolute; bottom: -10px; right: 50%;
+            transform: translateX(50%); width: 80px; height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--gold)); border-radius: 2px;
+        }
         .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; padding: 10px 0 50px; }
         .product-card {
             background: var(--white); border-radius: 24px; overflow: hidden;
             box-shadow: var(--shadow-soft); transition: var(--transition);
-            border: 1px solid rgba(212, 163, 115, 0.15); display: flex; flex-direction: column;
+            border: 1px solid rgba(212, 163, 115, 0.15); display: flex; flex-direction: column; position: relative;
         }
-        .product-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-hover); }
+        .product-card:hover { transform: translateY(-10px) scale(1.02); box-shadow: var(--shadow-hover); border-color: var(--gold); }
+        .badge {
+            position: absolute; top: 15px; right: 15px; background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white; padding: 5px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; z-index: 10;
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+        }
+        .badge.new { background: linear-gradient(135deg, var(--gold), #b8860b); box-shadow: 0 4px 12px rgba(212, 163, 115, 0.5); }
         .product-image {
-            width: 100%; height: 260px; background: #faf5f0;
-            display: flex; align-items: center; justify-content: center; padding: 20px;
+            width: 100%; height: 260px; background: linear-gradient(135deg, #faf5f0, #fce7f3);
+            display: flex; align-items: center; justify-content: center; padding: 20px; position: relative; overflow: hidden;
         }
-        .product-image img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .product-image img { max-width: 100%; max-height: 100%; object-fit: contain; transition: var(--transition); position: relative; z-index: 1; }
+        .product-card:hover .product-image img { transform: scale(1.1) rotate(-2deg); }
         .product-info { padding: 22px; flex-grow: 1; display: flex; flex-direction: column; }
-        .product-brand { font-size: 0.8rem; color: var(--gold); font-weight: 700; margin-bottom: 8px; }
-        .product-name { font-size: 0.95rem; font-weight: 600; margin-bottom: 15px; line-height: 1.6; flex-grow: 1; }
-        .product-price { font-size: 1.35rem; font-weight: 800; color: var(--primary); margin-top: auto; padding-top: 15px; border-top: 2px dashed var(--primary-light); }
+        .product-brand { font-size: 0.8rem; color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+        .product-brand::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+        .product-name { font-size: 0.95rem; font-weight: 600; color: var(--text-dark); margin-bottom: 15px; line-height: 1.6; flex-grow: 1; }
+        .product-price { font-size: 1.35rem; font-weight: 800; color: var(--primary); margin-top: 10px; padding-top: 15px; border-top: 2px dashed var(--primary-light); display: flex; align-items: center; gap: 6px; }
         .product-price span { font-size: 0.85rem; font-weight: 400; color: var(--text-muted); }
         .add-to-cart {
             margin-top: 15px; width: 100%; padding: 12px; border: none; border-radius: 14px;
             background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white;
-            font-family: inherit; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: 0.3s;
+            font-family: 'Vazirmatn', sans-serif; font-size: 0.95rem; font-weight: 600; cursor: pointer;
+            transition: var(--transition); position: relative; overflow: hidden;
         }
-        .add-to-cart:hover { opacity: 0.9; transform: translateY(-2px); }
+        .add-to-cart:hover { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(190, 24, 93, 0.35); }
 
-        /* سبد خرید */
+        .brands-section { background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(252, 231, 243, 0.6)); border-radius: 30px; padding: 40px 30px; margin: 30px 0 50px; text-align: center; backdrop-filter: blur(10px); border: 1px solid rgba(212, 163, 115, 0.2); }
+        .brands-section h3 { color: var(--primary-dark); font-size: 1.5rem; margin-bottom: 25px; font-weight: 700; }
+        .brands-list { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .brand-chip { background: white; padding: 12px 30px; border-radius: 50px; font-weight: 700; color: var(--primary); box-shadow: 0 4px 15px rgba(190, 24, 93, 0.1); transition: var(--transition); border: 2px solid transparent; cursor: pointer; }
+        .brand-chip:hover { border-color: var(--gold); transform: translateY(-3px); box-shadow: 0 8px 25px rgba(212, 163, 115, 0.3); color: var(--gold); }
+
+        footer { background: linear-gradient(135deg, var(--primary-dark), #4a0d2a); color: rgba(255,255,255,0.85); padding: 50px 20px 25px; margin-top: 60px; border-radius: 40px 40px 0 0; text-align: center; }
+        footer .footer-brand { font-size: 1.8rem; font-weight: 900; color: var(--gold-light); margin-bottom: 5px; }
+        footer .footer-sub { font-size: 0.95rem; color: rgba(255,255,255,0.7); margin-bottom: 25px; letter-spacing: 1px; }
+        .footer-socials { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin: 25px 0; }
+        .footer-socials .social-btn { padding: 10px 22px; font-size: 0.9rem; }
+        footer .copyright { margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(212, 163, 115, 0.3); font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+
+        /* استایل‌های سبد خرید */
         .cart-icon-btn {
             position: fixed; bottom: 20px; left: 20px; z-index: 1000;
             background: var(--primary-dark); color: white;
             width: 60px; height: 60px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer; border: 3px solid var(--gold);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer;
+            transition: var(--transition); border: 3px solid var(--gold);
         }
+        .cart-icon-btn:hover { transform: scale(1.1); }
         .cart-count {
             position: absolute; top: -5px; right: -5px;
             background: var(--gold); color: var(--primary-dark);
             width: 24px; height: 24px; border-radius: 50%;
-            font-size: 14px; font-weight: bold; display: flex; align-items: center; justify-content: center;
+            font-size: 14px; font-weight: bold;
+            display: flex; align-items: center; justify-content: center;
         }
         
         .cart-modal {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.6); z-index: 2000; justify-content: flex-end;
+            background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
+            z-index: 2000; justify-content: flex-end;
         }
         .cart-modal.show { display: flex; }
         .cart-content {
             background: var(--white); width: 100%; max-width: 400px; height: 100%;
-            display: flex; flex-direction: column; animation: slideIn 0.3s ease-out;
+            display: flex; flex-direction: column; box-shadow: -5px 0 20px rgba(0,0,0,0.2);
+            animation: slideIn 0.3s ease-out;
         }
         @keyframes slideIn { from { transform: translateX(-100%); } to { transform: translateX(0); } }
         
-        .cart-header { padding: 20px; border-bottom: 2px solid var(--primary-light); display: flex; justify-content: space-between; }
-        .cart-header h3 { color: var(--primary-dark); }
+        .cart-header {
+            padding: 20px; border-bottom: 2px solid var(--primary-light);
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .cart-header h3 { color: var(--primary-dark); margin: 0; }
         .close-cart { font-size: 24px; cursor: pointer; color: var(--text-muted); }
         
         .cart-items { flex-grow: 1; overflow-y: auto; padding: 20px; }
-        .cart-item { display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px dashed #ccc; }
-        .cart-item-info { flex-grow: 1; }
-        .cart-item-info h4 { font-size: 0.9rem; }
+        .cart-item {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px dashed #ccc;
+        }
+        .cart-item-info { flex-grow: 1; padding-left: 10px; }
+        .cart-item-info h4 { font-size: 0.9rem; margin-bottom: 5px; color: var(--text-dark); }
         .cart-item-price { color: var(--primary); font-weight: bold; font-size: 0.9rem; }
         
         .quantity-controls { display: flex; align-items: center; gap: 10px; }
-        .quantity-controls button { width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--primary); background: white; color: var(--primary); cursor: pointer; }
+        .quantity-controls button {
+            width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--primary);
+            background: white; color: var(--primary); cursor: pointer; font-weight: bold;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .quantity-controls button:hover { background: var(--primary); color: white; }
         .quantity-controls span { font-weight: bold; min-width: 20px; text-align: center; }
 
         .cart-footer { padding: 20px; border-top: 2px solid var(--primary-light); background: #fafafa; }
@@ -155,32 +239,57 @@
         .cart-total { display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 1.1rem; font-weight: bold; }
         .btn-checkout {
             width: 100%; padding: 15px; background: #25d366; color: white;
-            border: none; border-radius: 12px; font-family: inherit; font-size: 1rem; font-weight: bold; cursor: pointer;
+            border: none; border-radius: 12px; font-family: 'Vazirmatn', sans-serif;
+            font-size: 1rem; font-weight: bold; cursor: pointer; transition: 0.3s;
+            display: flex; justify-content: center; align-items: center; gap: 10px;
         }
-        .btn-checkout:hover { background: #128c7e; }
+        .btn-checkout:hover { background: #128c7e; transform: translateY(-2px); }
 
-        footer { background: linear-gradient(135deg, var(--primary-dark), #4a0d2a); color: white; padding: 40px 20px; text-align: center; margin-top: 50px; }
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5rem; }
+            .header-logo { width: 100px; height: 100px; }
+            header { padding: 30px 15px 35px; }
+            .products-grid { grid-template-columns: 1fr; gap: 20px; }
+            .section-title h2 { font-size: 1.5rem; }
+            .social-btn { padding: 10px 20px; font-size: 0.85rem; }
+            .cart-icon-btn { bottom: 15px; left: 15px; width: 50px; height: 50px; }
+        }
     </style>
 </head>
 <body>
 
     <div class="announcement-bar">
-        🚚 ارسال رایگان برای خریدهای بالای ۵۰۰,۰۰۰ تومان
+        🚚 ارسال رایگان برای خریدهای بالای ۵۰۰,۰۰۰ تومان | 💝 ۱۰٪ تخفیف ویژه مشتریان جدید
     </div>
 
     <header>
         <img src="logo.png" alt="لوگوی فروشگاه" class="header-logo">
+        
         <h1>Prrince<span>Beauty</span></h1>
         <p class="tagline">فروشگاه لوازم آرایشی</p>
         <div class="seller-name">👑 مدیریت: فاطمه حریت</div>
+
+        <div class="social-buttons">
+            <a href="https://www.instagram.com/prrincebeautty?utm_source=ig_web_button_share_sheet&obrf=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" class="social-btn instagram">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                اینستاگرام
+            </a>
+            <a href="https://wa.me/9911171445" target="_blank" rel="noopener" class="social-btn whatsapp">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                واتساپ
+            </a>
+        </div>
     </header>
 
     <div class="container">
-        <div class="section-title"><h2>محصولات پرفروش</h2></div>
+        <div class="section-title">
+            <h2>محصولات پرفروش</h2>
+        </div>
 
         <div class="products-grid">
             <!-- محصول ۱: بیول -->
             <div class="product-card">
+                <div class="badge">٪۱۰ تخفیف</div>
                 <div class="product-image">
                     <img src="https://storage.khanoumi.com/ProductImages/71502-2024112416273330.jpg" alt="لوسیون بیول">
                 </div>
@@ -194,6 +303,7 @@
 
             <!-- محصول ۲: کامان -->
             <div class="product-card">
+                <div class="badge">٪۱۷ تخفیف</div>
                 <div class="product-image">
                     <img src="https://storage.khanoumi.com/ProductImages/5bc24aaf30354c0aa0bcdcab5881db88.jpg" alt="لوسیون کامان">
                 </div>
@@ -207,6 +317,7 @@
 
             <!-- محصول ۳: اردن -->
             <div class="product-card">
+                <div class="badge">٪۱۰ تخفیف</div>
                 <div class="product-image">
                     <img src="https://storage.khanoumi.com/ProductImages/31489-20248271553944.jpg" alt="لوسیون آردن">
                 </div>
@@ -217,23 +328,106 @@
                     <button class="add-to-cart" onclick="addToCart('لوسیون آردن', 951570)">🛒 افزودن به سبد خرید</button>
                 </div>
             </div>
+
+            <!-- محصول ۴: ژوت -->
+            <div class="product-card">
+                <div class="badge">٪۴۳ تخفیف</div>
+                <div class="product-image">
+                    <img src="https://storage.khanoumi.com/ProductImages/e370a24fb12e49c39f289ca731d8998f.jpg" alt="کرم ژوت">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Jute | ژوت</div>
+                    <div class="product-name">کرم مرطوب کننده هیدرا اکتیو تیوپی ۷۰ میلی‌لیتر</div>
+                    <div class="product-price">۲۸۶,۸۸۰ <span>تومان</span></div>
+                    <button class="add-to-cart" onclick="addToCart('کرم ژوت', 286880)">🛒 افزودن به سبد خرید</button>
+                </div>
+            </div>
+
+            <!-- محصول ۵: وچه -->
+            <div class="product-card">
+                <div class="badge">٪۴۰ تخفیف</div>
+                <div class="product-image">
+                    <img src="https://storage.khanoumi.com/ProductImages/53903dc9e23d4f36bddf0810be37fa8a.jpg" alt="فوم وچه">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Voche | وچه</div>
+                    <div class="product-name">فوم شستشوی صورت مناسب پوست چرب و مستعد آکنه حجم ۱۵۰ میلی‌لیتر</div>
+                    <div class="product-price">۵۲۲,۰۰۰ <span>تومان</span></div>
+                    <button class="add-to-cart" onclick="addToCart('فوم وچه', 522000)">🛒 افزودن به سبد خرید</button>
+                </div>
+            </div>
+
+            <!-- محصول ۶: سی گل -->
+            <div class="product-card">
+                <div class="badge">٪۳۵ تخفیف</div>
+                <div class="product-image">
+                    <img src="https://storage.khanoumi.com/ProductImages/SCSG750ML-20241021144829149.jpg" alt="ضد آفتاب سی گل">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Seagull | سی گل</div>
+                    <div class="product-name">کرم ضد آفتاب بی رنگ با SPF60 مناسب پوست معمولی تا چرب حجم ۵۰ میلی‌لیتر</div>
+                    <div class="product-price">۴۴۸,۵۰۰ <span>تومان</span></div>
+                    <button class="add-to-cart" onclick="addToCart('ضد آفتاب سی گل', 448500)">🛒 افزودن به سبد خرید</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="brands-section">
+            <h3>🏷️ برندهای موجود</h3>
+            <div class="brands-list">
+                <div class="brand-chip">Biol</div>
+                <div class="brand-chip">Comeon</div>
+                <div class="brand-chip">Ardene</div>
+                <div class="brand-chip">Jute</div>
+                <div class="brand-chip">Voche</div>
+                <div class="brand-chip">Seagull</div>
+            </div>
         </div>
     </div>
 
-    <!-- سبد خرید -->
+    <!-- پاراگراف معرفی فروشگاه -->
+    <div class="container" style="margin-bottom: 50px;">
+        <div style="background: white; padding: 30px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid var(--primary-light);">
+            <h3 style="color: var(--primary-dark); margin-bottom: 15px; font-size: 1.3rem;">درباره فروشگاه لوازم آرایشی پرنس بیوتی</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 2; text-align: justify;">
+                فروشگاه لوازم آرایشی <strong>پرنس بیوتی (PrrinceBeauty)</strong> با مدیریت <strong>فاطمه حریت</strong>، مفتخر است بهترین و باکیفیت‌ترین محصولات آرایشی، بهداشتی و مراقبت از پوست را با قیمت مناسب در اختیار شما عزیزان قرار دهد. ما در پرنس بیوتی محصولاتی از برندهای معتبر و شناخته‌شده ایرانی مانند بیول، کامان، اردن، ژوت، وچه و سی گل را گردآوری کرده‌ایم تا تجربه‌ای لذت‌بخش و اطمینان‌بخش از خرید آنلاین لوازم آرایشی داشته باشید. هدف ما ارائه اصالت کالا، قیمت رقابتی و خدمات مشتریان عالی است تا زیبایی و شادابی را به خانه‌های شما هدیه دهیم.
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-brand">PrrinceBeauty</div>
+        <p class="footer-sub">فروشگاه لوازم آرایشی</p>
+        <div class="footer-socials">
+            <a href="https://www.instagram.com/prrincebeautty?utm_source=ig_web_button_share_sheet&obrf=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" class="social-btn instagram">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                اینستاگرام
+            </a>
+            <a href="https://wa.me/9911171445" target="_blank" rel="noopener" class="social-btn whatsapp">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                واتساپ
+            </a>
+        </div>
+        <div class="copyright">
+            © ۲۰۲۵ PrrinceBeauty | تمامی حقوق محفوظ است.
+        </div>
+    </footer>
+
+    <!-- آیکون سبد خرید شناور -->
     <div class="cart-icon-btn" onclick="openCart()">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
         <span class="cart-count" id="cartCount">0</span>
     </div>
 
+    <!-- مودال سبد خرید -->
     <div class="cart-modal" id="cartModal">
         <div class="cart-content">
             <div class="cart-header">
-                <h3>سبد خرید</h3>
+                <h3>سبد خرید شما</h3>
                 <span class="close-cart" onclick="closeCart()">&times;</span>
             </div>
             <div class="cart-items" id="cartItemsContainer">
-                <p style="text-align: center; color: #888;">سبد خرید خالی است.</p>
+                <p style="text-align: center; color: #888; margin-top: 50px;">سبد خرید شما خالی است.</p>
             </div>
             <div class="cart-footer">
                 <div class="discount-section">
@@ -246,37 +440,35 @@
                     <span>جمع کل:</span>
                     <span id="cartTotalPrice">۰ تومان</span>
                 </div>
-                <button class="btn-checkout" onclick="checkout()">ثبت سفارش در بله</button>
+                <button class="btn-checkout" onclick="checkout()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path></svg>
+                    ثبت سفارش در بله
+                </button>
             </div>
         </div>
     </div>
 
-    <footer>
-        <div style="font-size: 1.5rem; color: #f5e6d3; font-weight: bold; margin-bottom: 10px;">PrrinceBeauty</div>
-        <p>فروشگاه لوازم آرایشی - مدیریت فاطمه حریت</p>
-    </footer>
-
     <script>
-        // ⬇️ پلیس‌هولدر گیت‌هاب (دست نزن) ⬇️
-        const VALID_DISCOUNTS = [{"hash": "b3282a2f2a28757b3a18ab833de16a9c54518c0b0cf493e3f0a7cf09386f326a", "percent": 20}, {"hash": "52a6eb687cd22e80d3342eac6fcc7f2e19209e8f83eb9b82e81c6f3e6f30743b", "percent": 15}, {"hash": "dba11cf2edeef4f4a1d50a7471450e7ad31d0fb6421e2603caaf6fccfd2de4e8", "percent": 30}];
+        // آرایه هش‌های تخفیف (توسط گیت‌هاب اکشنز پر می‌شود)
+        const VALID_DISCOUNTS = DISCOUNT_HASHES_PLACEHOLDER;
         
         let cart = JSON.parse(localStorage.getItem('prrince_cart')) || [];
         let appliedDiscountPercent = 0;
         let userIp = "";
 
-        // دریافت IP کاربر برای جلوگیری از استفاده مجدد
+        // دریافت IP کاربر
         async function fetchIp() {
             try {
                 const response = await fetch('https://api.ipify.org?format=json');
                 const data = await response.json();
                 userIp = data.ip;
             } catch (e) {
-                userIp = "unknown_ip"; // اگر نتوانست بگیرد
+                userIp = "unknown_ip";
             }
         }
         fetchIp();
 
-        // ذخیره سبد
+        // توابع سبد خرید
         function saveCart() {
             localStorage.setItem('prrince_cart', JSON.stringify(cart));
             updateCartUI();
@@ -290,7 +482,7 @@
             if (existingItem) existingItem.quantity += 1;
             else cart.push({ name: name, price: price, quantity: 1 });
             saveCart();
-            alert('به سبد اضافه شد!');
+            alert('محصول به سبد خرید اضافه شد!');
         }
 
         function changeQuantity(index, delta) {
@@ -305,7 +497,7 @@
             document.getElementById('cartCount').innerText = totalCount;
         }
 
-        // هش کردن کد (SHA-256)
+        // توابع تخفیف
         async function hashString(string) {
             const utf8 = new TextEncoder().encode(string);
             const hashBuffer = await crypto.subtle.digest('SHA-256', utf8);
@@ -313,7 +505,6 @@
             return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
         }
 
-        // اعمال تخفیف
         async function applyDiscount() {
             const input = document.getElementById('discountInput').value.trim();
             const msg = document.getElementById('discountMessage');
@@ -324,16 +515,11 @@
                 return;
             }
 
-            // گرفتن لیست کدهای استفاده شده توسط این IP
             const usedDiscounts = JSON.parse(localStorage.getItem('used_discounts_' + userIp)) || [];
-
             const inputHash = await hashString(input);
-            
-            // پیدا کردن کد در لیست هش‌ها
             const matchedDiscount = VALID_DISCOUNTS.find(item => item.hash === inputHash);
             
             if (matchedDiscount) {
-                // چک کردن اینکه آیا این IP قبلاً از این کد استفاده کرده یا نه
                 if (usedDiscounts.includes(matchedDiscount.hash)) {
                     msg.style.color = 'red';
                     msg.innerText = 'شما قبلاً از این کد تخفیف استفاده کرده‌اید!';
@@ -342,8 +528,6 @@
                     appliedDiscountPercent = matchedDiscount.percent;
                     msg.style.color = 'green';
                     msg.innerText = `کد تخفیف معتبر است! ${appliedDiscountPercent}٪ تخفیف اعمال شد.`;
-                    
-                    // ثبت کد در لیست استفاده شده برای این IP
                     usedDiscounts.push(matchedDiscount.hash);
                     localStorage.setItem('used_discounts_' + userIp, JSON.stringify(usedDiscounts));
                 }
@@ -356,13 +540,13 @@
             }
         }
 
-        // نمایش سبد و محاسبه تخفیف
+        // نمایش سبد
         function renderCart() {
             const container = document.getElementById('cartItemsContainer');
             const totalEl = document.getElementById('cartTotalPrice');
             
             if (cart.length === 0) {
-                container.innerHTML = '<p style="text-align: center; color: #888;">سبد خرید خالی است.</p>';
+                container.innerHTML = '<p style="text-align: center; color: #888; margin-top: 50px;">سبد خرید شما خالی است.</p>';
                 totalEl.innerText = '۰ تومان';
                 return;
             }
@@ -406,7 +590,7 @@
 
         // ثبت سفارش
         function checkout() {
-            if (cart.length === 0) { alert('سبد خالی است!'); return; }
+            if (cart.length === 0) { alert('سبد خرید شما خالی است!'); return; }
 
             let message = "سلام، من می‌خواهم این محصولات را سفارش دهم:\n\n";
             cart.forEach(item => {
@@ -432,7 +616,7 @@
 
             window.open(baleUrl, '_blank');
             
-            // پاک کردن سبد و ریست کردن تخفیف
+            // پاک کردن سبد
             cart = [];
             appliedDiscountPercent = 0;
             document.getElementById('discountMessage').innerText = '';
@@ -442,6 +626,7 @@
             closeCart();
         }
 
+        // اجرای اولیه
         updateCartUI();
     </script>
 
