@@ -3,7 +3,7 @@ name: Update Discount Hashes
 on:
   push:
     branches: [ main ]
-  workflow_dispatch: # اجازه میده دستی هم اجراش کنی
+  workflow_dispatch: 
 
 jobs:
   build:
@@ -15,35 +15,33 @@ jobs:
       - name: Generate Hashes and Inject
         id: generate
         run: |
-          # خواندن متن Secret و هش کردن خط به خط
           RAW_SECRET="${{ secrets.TAKHFIF }}"
           
-          # اگر خالی بود، یک آرایه خالی بذار
           if [ -z "$RAW_SECRET" ]; then
-            HASH_ARRAY="[]"
+            JSON_ARRAY="[]"
           else
-            # استفاده از پایتون برای پردازش تمیز و تولید هش SHA-256
-            HASH_ARRAY=$(python3 -c "
+            # استفاده از پایتون برای پردازش و تولید JSON (هش + درصد)
+            JSON_ARRAY=$(python3 -c "
           import hashlib, json, sys
           raw_text = '''$RAW_SECRET'''
           lines = raw_text.strip().split('\n')
-          hashes = []
+          result = []
           for line in lines:
-              if ';' in line:
-                  parts = line.split(';')
+              parts = line.split(';')
+              if len(parts) >= 3:
                   code = parts[1].strip()
-                  if code:
+                  percent = parts[2].strip()
+                  if code and percent:
                       hashed = hashlib.sha256(code.encode('utf-8')).hexdigest()
-                      hashes.append(hashed)
-          print(json.dumps(hashes))
+                      result.append({'hash': hashed, 'percent': int(percent)})
+          print(json.dumps(result))
           ")
           fi
           
-          echo "Generated hashes: $HASH_ARRAY"
+          echo "Generated hashes: $JSON_ARRAY"
           
           # جایگزینی در فایل HTML
-          # ما یک پلیس‌هولدر به اسم DISCOUNT_HASHES_PLACEHOLDER در HTML داریم
-          sed -i "s|DISCOUNT_HASHES_PLACEHOLDER|$HASH_ARRAY|g" index.html
+          sed -i "s|DISCOUNT_HASHES_PLACEHOLDER|$JSON_ARRAY|g" index.html
 
       - name: Commit changes
         run: |
