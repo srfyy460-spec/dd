@@ -20,9 +20,8 @@ jobs:
           if [ -z "$RAW_SECRET" ]; then
             JSON_ARRAY="[]"
           else
-            # استفاده از پایتون برای پردازش و تولید JSON (هش + درصد)
             JSON_ARRAY=$(python3 -c "
-          import hashlib, json, sys
+          import hashlib, json
           raw_text = '''$RAW_SECRET'''
           lines = raw_text.strip().split('\n')
           result = []
@@ -38,9 +37,6 @@ jobs:
           ")
           fi
           
-          echo "Generated hashes: $JSON_ARRAY"
-          
-          # جایگزینی در فایل HTML
           sed -i "s|DISCOUNT_HASHES_PLACEHOLDER|$JSON_ARRAY|g" index.html
 
       - name: Commit changes
