@@ -143,6 +143,34 @@
             width: 100%; padding: 15px; background: #25d366; color: white;
             border: none; border-radius: 12px; font-family: inherit; font-size: 1rem; font-weight: bold; cursor: pointer;
         }
+
+        /* پنل مدیریت مخفی */
+        .admin-panel-modal {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8); z-index: 3000; justify-content: center; align-items: center;
+        }
+        .admin-panel-modal.show { display: flex; }
+        .admin-content {
+            background: var(--white); padding: 40px; border-radius: 20px;
+            width: 90%; max-width: 400px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+        .admin-content h2 { color: var(--primary-dark); margin-bottom: 20px; }
+        .admin-content input {
+            width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 8px; font-family: inherit;
+        }
+        .admin-content button {
+            width: 100%; padding: 12px; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;
+        }
+        .admin-error { color: red; font-size: 0.85rem; margin-bottom: 10px; }
+        
+        /* پنل مدیریت (بعد از ورود) */
+        .admin-dashboard {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #f4f4f4; z-index: 4000; padding: 40px; text-align: center;
+        }
+        .admin-dashboard.show { display: block; }
+        .admin-dashboard h2 { color: var(--primary-dark); margin-bottom: 20px; }
+        .admin-dashboard p { color: #666; }
     </style>
 </head>
 <body>
@@ -159,7 +187,7 @@
     <div class="container">
         <div class="section-title"><h2>محصولات پرفروش</h2></div>
         <div class="products-grid">
-            <!-- محصول ۱: بیول -->
+            <!-- محصولات (همان‌ها که بودند) -->
             <div class="product-card">
                 <div class="product-image"><img src="https://storage.khanoumi.com/ProductImages/71502-2024112416273330.jpg" alt="بیول"></div>
                 <div class="product-info">
@@ -169,8 +197,6 @@
                     <button class="add-to-cart" onclick="addToCart('لوسیون بیول', 441000)">🛒 افزودن به سبد</button>
                 </div>
             </div>
-
-            <!-- محصول ۲: کامان -->
             <div class="product-card">
                 <div class="product-image"><img src="https://storage.khanoumi.com/ProductImages/5bc24aaf30354c0aa0bcdcab5881db88.jpg" alt="کامان"></div>
                 <div class="product-info">
@@ -180,8 +206,6 @@
                     <button class="add-to-cart" onclick="addToCart('لوسیون کامان', 742730)">🛒 افزودن به سبد</button>
                 </div>
             </div>
-
-            <!-- محصول ۳: اردن -->
             <div class="product-card">
                 <div class="product-image"><img src="https://storage.khanoumi.com/ProductImages/31489-20248271553944.jpg" alt="آردن"></div>
                 <div class="product-info">
@@ -191,8 +215,6 @@
                     <button class="add-to-cart" onclick="addToCart('لوسیون آردن', 951570)">🛒 افزودن به سبد</button>
                 </div>
             </div>
-
-            <!-- محصول ۴: ژوت -->
             <div class="product-card">
                 <div class="product-image"><img src="https://storage.khanoumi.com/ProductImages/e370a24fb12e49c39f289ca731d8998f.jpg" alt="ژوت"></div>
                 <div class="product-info">
@@ -202,8 +224,6 @@
                     <button class="add-to-cart" onclick="addToCart('کرم ژوت', 286880)">🛒 افزودن به سبد</button>
                 </div>
             </div>
-
-            <!-- محصول ۵: وچه -->
             <div class="product-card">
                 <div class="product-image"><img src="https://storage.khanoumi.com/ProductImages/53903dc9e23d4f36bddf0810be37fa8a.jpg" alt="وچه"></div>
                 <div class="product-info">
@@ -213,8 +233,6 @@
                     <button class="add-to-cart" onclick="addToCart('فوم وچه', 522000)">🛒 افزودن به سبد</button>
                 </div>
             </div>
-
-            <!-- محصول ۶: سی گل -->
             <div class="product-card">
                 <div class="product-image"><img src="https://storage.khanoumi.com/ProductImages/SCSG750ML-20241021144829149.jpg" alt="سی گل"></div>
                 <div class="product-info">
@@ -260,6 +278,22 @@
         </div>
     </div>
 
+    <!-- پنل مدیریت مخفی (ورود رمز) -->
+    <div class="admin-panel-modal" id="adminLoginModal">
+        <div class="admin-content">
+            <h2>🔐 ورود به پنل مدیریت</h2>
+            <p class="admin-error" id="adminError"></p>
+            <input type="password" id="adminPasswordInput" placeholder="رمز عبور را وارد کنید">
+            <button onclick="checkAdminPassword()">ورود</button>
+        </div>
+    </div>
+
+    <!-- پنل مدیریت (بعد از ورود) -->
+    <div class="admin-dashboard" id="adminDashboard">
+        <h2>✅ خوش آمدید به پنل مدیریت</h2>
+        <p>این یک پنل تستی است. هنوز هیچ امکاناتی به آن اضافه نشده است.</p>
+    </div>
+
     <script>
         // آرایه کدهای تخفیف
         let VALID_DISCOUNTS = [];
@@ -284,7 +318,6 @@
                         }
                     }
                 });
-                console.log("Discounts loaded successfully:", VALID_DISCOUNTS.length);
             } catch (e) {
                 console.error("Error loading discounts:", e);
             }
@@ -332,10 +365,19 @@
             document.getElementById('cartCount').innerText = count;
         }
 
+        // ⬇️ منطق مخفی پنل مدیریت ⬇️
         function applyDiscount() {
             const input = document.getElementById('discountInput').value.trim();
             const msg = document.getElementById('discountMessage');
             
+            // چک کردن برای باز کردن پنل مدیریت
+            if (input === 'owner_froshghah') {
+                document.getElementById('adminLoginModal').classList.add('show');
+                document.getElementById('discountInput').value = ''; // پاک کردن فیلد
+                msg.innerText = '';
+                return;
+            }
+
             if (!input) {
                 msg.style.color = 'red';
                 msg.innerText = 'لطفاً کد تخفیف را وارد کنید.';
@@ -369,6 +411,31 @@
                 appliedDiscountPercent = 0;
             }
             renderCart();
+        }
+
+        // چک کردن رمز عبور مدیریت
+        async function checkAdminPassword() {
+            const inputPass = document.getElementById('adminPasswordInput').value.trim();
+            const errorEl = document.getElementById('adminError');
+            errorEl.innerText = '';
+
+            try {
+                const response = await fetch('ownerpanellpssrowwlpakdoweghithabfatemeh.txt');
+                if (!response.ok) throw new Error('File not found');
+                const correctPass = (await response.text()).trim();
+
+                if (inputPass === correctPass) {
+                    // رمز درست است
+                    document.getElementById('adminLoginModal').classList.remove('show');
+                    document.getElementById('adminDashboard').classList.add('show');
+                    closeCart(); // بستن سبد خرید
+                } else {
+                    errorEl.innerText = 'رمز عبور اشتباه است!';
+                }
+            } catch (e) {
+                errorEl.innerText = 'خطا در سیستم مدیریت. فایل رمز پیدا نشد.';
+                console.error(e);
+            }
         }
 
         function renderCart() {
