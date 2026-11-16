@@ -42,6 +42,7 @@ jobs:
           
           echo "Generated hashes: $JSON_ARRAY"
           
+          # جایگزینی پلیس‌هولدر با هش‌های تولید شده
           sed -i "s|DISCOUNT_HASHES_PLACEHOLDER|$JSON_ARRAY|g" index.html
 
       - name: Commit changes
