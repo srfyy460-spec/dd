@@ -5,6 +5,9 @@ on:
     branches: [ main ]
   workflow_dispatch: 
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -36,6 +39,8 @@ jobs:
           print(json.dumps(result))
           ")
           fi
+          
+          echo "Generated hashes: $JSON_ARRAY"
           
           sed -i "s|DISCOUNT_HASHES_PLACEHOLDER|$JSON_ARRAY|g" index.html
 
