@@ -450,7 +450,7 @@
 
     <script>
         // آرایه هش‌های تخفیف (توسط گیت‌هاب اکشنز پر می‌شود)
-        const VALID_DISCOUNTS = DISCOUNT_HASHES_PLACEHOLDER;
+        const VALID_DISCOUNTS = [{"hash": "b3282a2f2a28757b3a18ab833de16a9c54518c0b0cf493e3f0a7cf09386f326a", "percent": 20}, {"hash": "52a6eb687cd22e80d3342eac6fcc7f2e19209e8f83eb9b82e81c6f3e6f30743b", "percent": 15}, {"hash": "dba11cf2edeef4f4a1d50a7471450e7ad31d0fb6421e2603caaf6fccfd2de4e8", "percent": 30}];
         
         let cart = JSON.parse(localStorage.getItem('prrince_cart')) || [];
         let appliedDiscountPercent = 0;
