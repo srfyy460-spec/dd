@@ -1,0 +1,54 @@
+name: Update Discount Hashes
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: # اجازه میده دستی هم اجراش کنی
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Generate Hashes and Inject
+        id: generate
+        run: |
+          # خواندن متن Secret و هش کردن خط به خط
+          RAW_SECRET="${{ secrets.TAKHFIF }}"
+          
+          # اگر خالی بود، یک آرایه خالی بذار
+          if [ -z "$RAW_SECRET" ]; then
+            HASH_ARRAY="[]"
+          else
+            # استفاده از پایتون برای پردازش تمیز و تولید هش SHA-256
+            HASH_ARRAY=$(python3 -c "
+          import hashlib, json, sys
+          raw_text = '''$RAW_SECRET'''
+          lines = raw_text.strip().split('\n')
+          hashes = []
+          for line in lines:
+              if ';' in line:
+                  parts = line.split(';')
+                  code = parts[1].strip()
+                  if code:
+                      hashed = hashlib.sha256(code.encode('utf-8')).hexdigest()
+                      hashes.append(hashed)
+          print(json.dumps(hashes))
+          ")
+          fi
+          
+          echo "Generated hashes: $HASH_ARRAY"
+          
+          # جایگزینی در فایل HTML
+          # ما یک پلیس‌هولدر به اسم DISCOUNT_HASHES_PLACEHOLDER در HTML داریم
+          sed -i "s|DISCOUNT_HASHES_PLACEHOLDER|$HASH_ARRAY|g" index.html
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add index.html
+          git commit -m "Update discount hashes automatically" || echo "No changes to commit"
+          git push
